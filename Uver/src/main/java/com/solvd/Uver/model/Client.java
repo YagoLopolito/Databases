@@ -1,14 +1,14 @@
 package com.solvd.Uver.model;
 
-public class Clients {
+public class Client {
     int idClient;
     String firstName, lastName;
     boolean isForMailing, isForDriver;
 
-    public Clients() {
+    public Client() {
     }
 
-    public Clients(int idClient, String firstName, String lastName, boolean isForMailing, boolean isForDriver) {
+    public Client(int idClient, String firstName, String lastName, boolean isForMailing, boolean isForDriver) {
         this.idClient = idClient;
         this.firstName = firstName;
         this.lastName = lastName;

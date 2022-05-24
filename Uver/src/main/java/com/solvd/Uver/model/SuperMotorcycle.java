@@ -1,25 +1,25 @@
 package com.solvd.Uver.model;
 
-public class SuperCars {
-    int idSuperCar, maxSpeed;
+public class SuperMotorcycle {
+    int idSuperMotorcycle, maxSpeed;
     String make, model;
 
-    public SuperCars() {
+    public SuperMotorcycle() {
     }
 
-    public SuperCars(int idSuperCar, int maxSpeed, String make, String model) {
-        this.idSuperCar = idSuperCar;
+    public SuperMotorcycle(int idSuperMotorcycle, int maxSpeed, String make, String model) {
+        this.idSuperMotorcycle = idSuperMotorcycle;
         this.maxSpeed = maxSpeed;
         this.make = make;
         this.model = model;
     }
 
-    public int getIdSuperCar() {
-        return idSuperCar;
+    public int getIdSuperMotorcycle() {
+        return idSuperMotorcycle;
     }
 
-    public void setIdSuperCar(int idSuperCar) {
-        this.idSuperCar = idSuperCar;
+    public void setIdSuperMotorcycle(int idSuperMotorcycle) {
+        this.idSuperMotorcycle = idSuperMotorcycle;
     }
 
     public int getMaxSpeed() {
@@ -48,8 +48,8 @@ public class SuperCars {
 
     @Override
     public String toString() {
-        return "SuperCars{" +
-                "idSuperCar=" + idSuperCar +
+        return "SuperMotorcycles{" +
+                "idSuperMotorcycle=" + idSuperMotorcycle +
                 ", maxSpeed=" + maxSpeed +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +

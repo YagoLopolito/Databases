@@ -1,13 +1,13 @@
 package com.solvd.Uver.model;
 
-public class Employees {
+public class Employee {
     int idEmployees, wage;
     String firstName, lastName, position;
 
-    public Employees() {
+    public Employee() {
     }
 
-    public Employees(int idEmployees, int wage, String firstName, String lastName, String position) {
+    public Employee(int idEmployees, int wage, String firstName, String lastName, String position) {
         this.idEmployees = idEmployees;
         this.wage = wage;
         this.firstName = firstName;

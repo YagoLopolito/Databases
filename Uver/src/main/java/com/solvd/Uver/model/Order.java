@@ -1,14 +1,21 @@
 package com.solvd.Uver.model;
 
-public class Orders {
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+@XmlRootElement(name="order")
+@XmlType(propOrder = {"idOrder", "distance", "mailing", "driver", "destination", "estimatedTimeOfArrival"})
+public class Order {
     int idOrder, estimatedTimeOfArrival, distance;
     String destination;
     boolean isMailing, isDriver;
-
-    public Orders() {
+    public Order() {
     }
 
-    public Orders(int idOrder, int estimatedTimeOfArrival, int distance, String destination, boolean isMailing, boolean isDriver) {
+    public Order(int idOrder, int estimatedTimeOfArrival, int distance, String destination, boolean isMailing, boolean isDriver) {
         this.idOrder = idOrder;
         this.estimatedTimeOfArrival = estimatedTimeOfArrival;
         this.distance = distance;
@@ -16,7 +23,7 @@ public class Orders {
         this.isMailing = isMailing;
         this.isDriver = isDriver;
     }
-
+@XmlAttribute(name="idOrder")
     public int getIdOrder() {
         return idOrder;
     }
@@ -48,7 +55,7 @@ public class Orders {
     public void setDestination(String destination) {
         this.destination = destination;
     }
-
+    @XmlElement(name="mailing")
     public boolean isMailing() {
         return isMailing;
     }
@@ -56,7 +63,7 @@ public class Orders {
     public void setMailing(boolean mailing) {
         isMailing = mailing;
     }
-
+    @XmlElement(name="driver")
     public boolean isDriver() {
         return isDriver;
     }

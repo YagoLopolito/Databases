@@ -1,10 +1,10 @@
 package com.solvd.Uver.model;
 
-public class DeliveryMans {
+public class DeliveryMan {
 
     String firstName, lastName;
 
-    public DeliveryMans(String firstName, String lastName) {
+    public DeliveryMan(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

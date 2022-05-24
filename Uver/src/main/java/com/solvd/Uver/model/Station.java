@@ -1,13 +1,13 @@
 package com.solvd.Uver.model;
 
-public class Stations {
+public class Station {
     int stationNum;
     String city;
 
-    public Stations() {
+    public Station() {
     }
 
-    public Stations(int stationNum, String city) {
+    public Station(int stationNum, String city) {
         this.stationNum = stationNum;
         this.city = city;
     }

@@ -1,13 +1,13 @@
 package com.solvd.Uver.model;
 
-public class Cars {
+public class Car {
     int idCar, maxSpeed;
     String make, model;
 
-    public Cars() {
+    public Car() {
     }
 
-    public Cars(int idCar, int maxSpeed, String make, String model) {
+    public Car(int idCar, int maxSpeed, String make, String model) {
         this.idCar = idCar;
         this.maxSpeed = maxSpeed;
         this.make = make;

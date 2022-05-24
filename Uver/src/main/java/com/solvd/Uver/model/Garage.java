@@ -1,12 +1,12 @@
 package com.solvd.Uver.model;
 
-public class Garages {
+public class Garage {
     int idGarage, stationNum, carsCapacity, motorcycleCapacity;
 
-    public Garages() {
+    public Garage() {
     }
 
-    public Garages(int idGarage, int stationNum, int carsCapacity, int motorcycleCapacity) {
+    public Garage(int idGarage, int stationNum, int carsCapacity, int motorcycleCapacity) {
         this.idGarage = idGarage;
         this.stationNum = stationNum;
         this.carsCapacity = carsCapacity;

@@ -1,13 +1,13 @@
 package com.solvd.Uver.model;
 
-public class Drivers {
+public class Driver {
     int idSystemEngineers, wage;
     String firstName, lastName, sex;
 
-    public Drivers() {
+    public Driver() {
     }
 
-    public Drivers(int idSystemEngineers, int wage, String firstName, String lastName, String sex) {
+    public Driver(int idSystemEngineers, int wage, String firstName, String lastName, String sex) {
         this.idSystemEngineers = idSystemEngineers;
         this.wage = wage;
         this.firstName = firstName;

@@ -1,14 +1,14 @@
 package com.solvd.Uver.model;
 
-public class PrimeClients {
+public class PrimeClient {
     int idPrimeClients;
     String firstName, lastName;
     boolean isForMailing, isForDriver, hasPresidentialMenu;
 
-    public PrimeClients() {
+    public PrimeClient() {
     }
 
-    public PrimeClients(int idPrimeClients, String firstName, String lastName, boolean isForMailing, boolean isForDriver, boolean hasPresidentialMenu) {
+    public PrimeClient(int idPrimeClients, String firstName, String lastName, boolean isForMailing, boolean isForDriver, boolean hasPresidentialMenu) {
         this.idPrimeClients = idPrimeClients;
         this.firstName = firstName;
         this.lastName = lastName;
