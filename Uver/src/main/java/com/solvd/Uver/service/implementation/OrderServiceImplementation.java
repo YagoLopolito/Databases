@@ -36,28 +36,19 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
-    public Order getOne(int id) {
-        return null;
+    public Order getOne(int id) throws DAOException {
+        OrderDAO ord = new MySQLOrderDAO(conn);
+        Order order = null;
+        order = ord.give(id);
+        return order;
     }
 
     @Override
-    public List<Order> getAll() {
-        return null;
-    }
-
-    @Override
-    public List<Order> giveAll() throws DAOException {
+    public List<Order> getAll() throws DAOException {
         OrderDAO ord = new MySQLOrderDAO(conn);
         List<Order> orderList = null;
         orderList = ord.giveAll();
         return orderList;
     }
 
-    @Override
-    public Order give(Integer id) throws DAOException {
-        OrderDAO ord = new MySQLOrderDAO(conn);
-        Order order = null;
-        order = ord.give(id);
-        return order;
-    }
 }

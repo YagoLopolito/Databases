@@ -8,11 +8,11 @@ import java.util.List;
 public interface OrderService {
     void give(Order a) throws DAOException;
 
-    void delete(int id);
+    void delete(int id) throws DAOException;
 
-    void modify(Order entities);
+    void modify(Order entities) throws DAOException;
 
-    Order getOne(int id);
+    Order getOne(int id) throws DAOException;
 
-    List<Order> getAll();
+    List<Order> getAll() throws DAOException;
 }
