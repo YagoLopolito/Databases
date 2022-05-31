@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com/solvd/Uver/daos/ClientDAO.java">
+    <resultMap id="ClientResultMap" type="com/solvd/Uver/model/Client.java" autoMapping="false">
+        <result column="client_first_name" property="firstName"/>
+
+        <result column="client_last_name" property="lastName"/>
+
+    </resultMap>
+
+    <select id="getById" parameterType="Integer" resultMap="ClientResultMap">
+        Select * from client where idClient =#{id}
+    </select>
+
+    <select id="getAll" resultMap="ClientResultMap">
+
+    </select>
+
+    <delete id="delete">
+
+    </delete>
+    <insert id="save">
+
+    </insert>
+    <update id="update">
+
+    </update>
+</mapper>

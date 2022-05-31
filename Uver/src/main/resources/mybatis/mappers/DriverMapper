@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com/solvd/Uver/daos/DriverDAO.java">
+    <resultMap id="DriverResultMap" type="com/solvd/Uver/model/Driver.java" autoMapping="false">
+        <result column="driver_first_name" property="firstName"/>
+
+        <result column="driver_last_name" property="lastName"/>
+
+        <result column="driver_wage" property="wage"/>
+
+    </resultMap>
+
+    <select id="getById" parameterType="Integer" resultMap="DriverResultMap">
+        Select * from driver where idDriver =#{id}
+    </select>
+
+    <select id="getAll" resultMap="DriverResultMap">
+
+    </select>
+
+    <delete id="delete">
+
+    </delete>
+    <insert id="save">
+
+    </insert>
+    <update id="update">
+
+    </update>
+</mapper>
