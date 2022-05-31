@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLMotorcycleDAO implements MotorcycleDAO {
-    final String INSERT = "INSERT INTO motorcycle(idMotorcycle, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    final String UPDATE = "UPDATE motorcycle SET idMotorcycle = ?, make = ?, model = ?, maxSpeed = ? WHERE idMotorcycle = ?";
-    final String DELETE = "DELETE FROM motorcycle WHERE idMotorcycle = ?";
-    final String GETALL = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle";
-    final String GETONE = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle WHERE idMotorcycle = ?";
+    private final static String INSERT = "INSERT INTO motorcycle(idMotorcycle, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE motorcycle SET idMotorcycle = ?, make = ?, model = ?, maxSpeed = ? WHERE idMotorcycle = ?";
+    private final static String DELETE = "DELETE FROM motorcycle WHERE idMotorcycle = ?";
+    private final static String GET_ALL = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle";
+    private final static String GET_ONE = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle WHERE idMotorcycle = ?";
     private final Connection conn;
 
     public MySQLMotorcycleDAO(Connection conn) {
@@ -120,7 +120,7 @@ public class MySQLMotorcycleDAO implements MotorcycleDAO {
         ResultSet rs = null;
         List<Moto> motos = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 motos.add(convert(rs));
@@ -153,7 +153,7 @@ public class MySQLMotorcycleDAO implements MotorcycleDAO {
         ResultSet rs = null;
         Moto a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

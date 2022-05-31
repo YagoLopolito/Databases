@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLEmployeeDAO implements EmployeeDAO {
-    final String INSERT = "INSERT INTO employee(idEmployee, firstName, lastName, position, wage) VALUES(?, ?, ?, ?, ?)";
-    final String UPDATE = "UPDATE employee SET idCar = ?, firstName = ?, lastName = ?, position = ?, wage = ? WHERE idEmployee = ?";
-    final String DELETE = "DELETE FROM employee WHERE idEmployee = ?";
-    final String GETALL = "SELECT idEmployee, firstName, lastName, position, wage FROM employee";
-    final String GETONE = "SELECT idEmployee, firstName, lastName, position, wage FROM employee WHERE idEmployee = ?";
+    private final static String INSERT = "INSERT INTO employee(idEmployee, firstName, lastName, position, wage) VALUES(?, ?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE employee SET idCar = ?, firstName = ?, lastName = ?, position = ?, wage = ? WHERE idEmployee = ?";
+    private final static String DELETE = "DELETE FROM employee WHERE idEmployee = ?";
+    private final static String GET_ALL = "SELECT idEmployee, firstName, lastName, position, wage FROM employee";
+    private final static String GET_ONE = "SELECT idEmployee, firstName, lastName, position, wage FROM employee WHERE idEmployee = ?";
     private final Connection conn;
 
     public MySQLEmployeeDAO(Connection conn) {
@@ -122,7 +122,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
         ResultSet rs = null;
         List<Employee> employees = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 employees.add(convert(rs));
@@ -155,7 +155,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
         ResultSet rs = null;
         Employee a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

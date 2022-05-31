@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLDriverDAO implements DriverDAO {
-    final String INSERT = "INSERT INTO driver(idDriver, firstName, lastName, wage) VALUES(?, ?, ?, ?)";
-    final String UPDATE = "UPDATE driver SET idCar = ?, firstName = ?, lastName = ?, wage = ? WHERE idDriver = ?";
-    final String DELETE = "DELETE FROM driver WHERE idDriver = ?";
-    final String GETALL = "SELECT idDriver, firstName, lastName, wage FROM driver";
-    final String GETONE = "SELECT idDriver, firstName, lastName, wage FROM driver WHERE idDriver = ?";
+    private final static String INSERT = "INSERT INTO driver(idDriver, firstName, lastName, wage) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE driver SET idCar = ?, firstName = ?, lastName = ?, wage = ? WHERE idDriver = ?";
+    private final static String DELETE = "DELETE FROM driver WHERE idDriver = ?";
+    private final static String GET_ALL = "SELECT idDriver, firstName, lastName, wage FROM driver";
+    private final static String GET_ONE = "SELECT idDriver, firstName, lastName, wage FROM driver WHERE idDriver = ?";
     private final Connection conn;
 
     public MySQLDriverDAO(Connection conn) {
@@ -121,7 +121,7 @@ public class MySQLDriverDAO implements DriverDAO {
         ResultSet rs = null;
         List<Driver> drivers = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 drivers.add(convert(rs));
@@ -154,7 +154,7 @@ public class MySQLDriverDAO implements DriverDAO {
         ResultSet rs = null;
         Driver a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

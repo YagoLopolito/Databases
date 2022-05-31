@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLClientDAO implements ClientDAO {
-    final String INSERT = "INSERT INTO client(idClient, firstName, lastName, isForDriver, isForMailing) VALUES(?, ?, ?, ?, ?)";
-    final String UPDATE = "UPDATE client SET idClient = ?, firstName = ?, lastName = ?, isForDriver = ?, isForMailing WHERE idClient = ?";
-    final String DELETE = "DELETE FROM client WHERE idClient = ?";
-    final String GETALL = "SELECT idClient, firstName, lastName, isForDriver, isForMailing FROM client";
-    final String GETONE = "SELECT idClient, firstName, lastName, isForDriver, isForMailing FROM client WHERE idClient = ?";
+    private final static String INSERT = "INSERT INTO client(idClient, firstName, lastName, isForDriver, isForMailing) VALUES(?, ?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE client SET idClient = ?, firstName = ?, lastName = ?, isForDriver = ?, isForMailing WHERE idClient = ?";
+    private final static String DELETE = "DELETE FROM client WHERE idClient = ?";
+    private final static String GET_ALL = "SELECT idClient, firstName, lastName, isForDriver, isForMailing FROM client";
+    private final static String GET_ONE = "SELECT idClient, firstName, lastName, isForDriver, isForMailing FROM client WHERE idClient = ?";
     private final Connection conn;
 
     public MySQLClientDAO(Connection conn) {
@@ -122,7 +122,7 @@ public class MySQLClientDAO implements ClientDAO {
         ResultSet rs = null;
         List<Client> clients = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 clients.add(convert(rs));
@@ -155,7 +155,7 @@ public class MySQLClientDAO implements ClientDAO {
         ResultSet rs = null;
         Client a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

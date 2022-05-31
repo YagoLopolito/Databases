@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLSuperCarDAO implements SuperCarDAO {
-    final String INSERT = "INSERT INTO superCar(idSuperCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    final String UPDATE = "UPDATE superCar SET idSuperCar = ?, make = ?, model = ?, maxSpeed = ? WHERE idSuperCar = ?";
-    final String DELETE = "DELETE FROM superCar WHERE idSuperCar = ?";
-    final String GETALL = "SELECT idSuperCar, make, model, maxSpeed FROM superCar";
-    final String GETONE = "SELECT idSuperCar, make, model, maxSpeed FROM superCar WHERE idSuperCar = ?";
+    private final static String INSERT = "INSERT INTO superCar(idSuperCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE superCar SET idSuperCar = ?, make = ?, model = ?, maxSpeed = ? WHERE idSuperCar = ?";
+    private final static String DELETE = "DELETE FROM superCar WHERE idSuperCar = ?";
+    private final static String GET_ALL = "SELECT idSuperCar, make, model, maxSpeed FROM superCar";
+    private final static String GET_ONE = "SELECT idSuperCar, make, model, maxSpeed FROM superCar WHERE idSuperCar = ?";
     private final Connection conn;
 
     public MySQLSuperCarDAO(Connection conn) {
@@ -121,7 +121,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         ResultSet rs = null;
         List<SuperCar> sCars = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 sCars.add(convert(rs));
@@ -154,7 +154,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         ResultSet rs = null;
         SuperCar a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLCarDAO implements CarDAO {
-    final String INSERT = "INSERT INTO car(idCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    final String UPDATE = "UPDATE car SET idCar = ?, make = ?, model = ?, maxSpeed = ? WHERE idCar = ?";
-    final String DELETE = "DELETE FROM car WHERE idCar = ?";
-    final String GETALL = "SELECT idCar, make, model, maxSpeed FROM car";
-    final String GETONE = "SELECT idCar, make, model, maxSpeed FROM car WHERE idCar = ?";
+    private final static String INSERT = "INSERT INTO car(idCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE car SET idCar = ?, make = ?, model = ?, maxSpeed = ? WHERE idCar = ?";
+    private final static String DELETE = "DELETE FROM car WHERE idCar = ?";
+    private final static String GET_ALL = "SELECT idCar, make, model, maxSpeed FROM car";
+    private final static String GET_ONE = "SELECT idCar, make, model, maxSpeed FROM car WHERE idCar = ?";
     private final Connection conn;
 
     public MySQLCarDAO(Connection conn) {
@@ -120,7 +120,7 @@ public class MySQLCarDAO implements CarDAO {
         ResultSet rs = null;
         List<Car> cars = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 cars.add(convert(rs));
@@ -153,7 +153,7 @@ public class MySQLCarDAO implements CarDAO {
         ResultSet rs = null;
         Car a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

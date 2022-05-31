@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLSuperMotoDAO implements SuperMotoDAO {
-    final String INSERT = "INSERT INTO superMotorcycle(idSuperMotorcycle, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    final String UPDATE = "UPDATE superMotorcycle SET idSuperMotorcycle = ?, make = ?, model = ?, maxSpeed = ? WHERE idSuperMotorcycle = ?";
-    final String DELETE = "DELETE FROM superMotorcycle WHERE idSuperMotorcycle = ?";
-    final String GETALL = "SELECT idSuperMotorcycle, make, model, maxSpeed FROM superMotorcycle";
-    final String GETONE = "SELECT idSuperMotorcycle, make, model, maxSpeed FROM superMotorcycle WHERE idSuperMotorcycle = ?";
+    private final static String INSERT = "INSERT INTO superMotorcycle(idSuperMotorcycle, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE superMotorcycle SET idSuperMotorcycle = ?, make = ?, model = ?, maxSpeed = ? WHERE idSuperMotorcycle = ?";
+    private final static String DELETE = "DELETE FROM superMotorcycle WHERE idSuperMotorcycle = ?";
+    private final static String GET_ALL = "SELECT idSuperMotorcycle, make, model, maxSpeed FROM superMotorcycle";
+    private final static String GET_ONE = "SELECT idSuperMotorcycle, make, model, maxSpeed FROM superMotorcycle WHERE idSuperMotorcycle = ?";
     private final Connection conn;
 
     public MySQLSuperMotoDAO(Connection conn) {
@@ -117,7 +117,7 @@ public class MySQLSuperMotoDAO implements SuperMotoDAO {
         ResultSet rs = null;
         List<SuperMotorcycle> sMotos = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 sMotos.add(convert(rs));
@@ -150,7 +150,7 @@ public class MySQLSuperMotoDAO implements SuperMotoDAO {
         ResultSet rs = null;
         SuperMotorcycle a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 

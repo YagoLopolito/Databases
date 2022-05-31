@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLOrderDAO implements OrderDAO {
-    final String INSERT = "INSERT INTO order(idOrder, destination, distance, estimatedTimeOfArrival) VALUES(?, ?, ?, ?)";
-    final String UPDATE = "UPDATE order SET idOrder = ?, destination = ?, distance = ?, estimatedTimeOfArrival = ? WHERE idOrder = ?";
-    final String DELETE = "DELETE FROM order WHERE idOrder = ?";
-    final String GETALL = "SELECT idOrder, destination, distance, estimatedTimeOfArrival FROM order";
-    final String GETONE = "SELECT idOrder, destination, distance, estimatedTimeOfArrival FROM order WHERE idOrder = ?";
+    private final static String INSERT = "INSERT INTO order(idOrder, destination, distance, estimatedTimeOfArrival) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE order SET idOrder = ?, destination = ?, distance = ?, estimatedTimeOfArrival = ? WHERE idOrder = ?";
+    private final static String DELETE = "DELETE FROM order WHERE idOrder = ?";
+    private final static String GET_ALL = "SELECT idOrder, destination, distance, estimatedTimeOfArrival FROM order";
+    private final static String GET_ONE = "SELECT idOrder, destination, distance, estimatedTimeOfArrival FROM order WHERE idOrder = ?";
     private final Connection conn;
 
     public MySQLOrderDAO(Connection conn) {
@@ -119,7 +119,7 @@ public class MySQLOrderDAO implements OrderDAO {
         ResultSet rs = null;
         List<Order> orders = new ArrayList<>();
         try {
-            stat = conn.prepareStatement(GETALL);
+            stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
                 orders.add(convert(rs));
@@ -152,7 +152,7 @@ public class MySQLOrderDAO implements OrderDAO {
         ResultSet rs = null;
         Order a = null;
         try {
-            stat = conn.prepareStatement(GETONE);
+            stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
             rs = stat.executeQuery();
 
