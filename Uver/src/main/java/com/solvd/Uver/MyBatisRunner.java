@@ -48,12 +48,6 @@ public class MyBatisRunner {
             Moto moto = motorcycleMapper.give(2);
             l.info("Motorcycle = " + moto);
 
-            l.info("\nORDER\n");
-            OrderDAO orderMapper = session.getMapper(OrderDAO.class);
-            Order order = orderMapper.give(1);
-            l.info("Order = " + order);
-
-
             l.info("\nSUPER CAR\n");
             SuperCarDAO superCarMapper = session.getMapper(SuperCarDAO.class);
             l.info("Super Car = " + superCarMapper.give(1));

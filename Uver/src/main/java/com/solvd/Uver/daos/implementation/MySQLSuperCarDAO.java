@@ -56,7 +56,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         PreparedStatement stat = null;
         try {
             stat = conn.prepareStatement(DELETE);
-            stat.setInt(1, a.getIdSuperCar());
+            stat.setInt(1, a);
 
 
             if (stat.executeUpdate() == 0) {

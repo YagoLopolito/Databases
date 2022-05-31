@@ -57,7 +57,7 @@ public class MySQLDriverDAO implements DriverDAO {
         PreparedStatement stat = null;
         try {
             stat = conn.prepareStatement(DELETE);
-            stat.setInt(1, a.getIdDriver());
+            stat.setInt(1, a);
             if (stat.executeUpdate() == 0) {
                 throw new DAOException("May not have been saved");
             }

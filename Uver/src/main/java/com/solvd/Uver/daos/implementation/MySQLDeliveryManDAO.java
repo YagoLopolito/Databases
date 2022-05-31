@@ -57,7 +57,7 @@ public class MySQLDeliveryManDAO implements DeliveryManDAO {
         PreparedStatement stat = null;
         try {
             stat = conn.prepareStatement(DELETE);
-            stat.setInt(1, a.getIdDeliveryMan());
+            stat.setInt(1, a);
 
             if (stat.executeUpdate() == 0) {
                 throw new DAOException("May not have been saved");
