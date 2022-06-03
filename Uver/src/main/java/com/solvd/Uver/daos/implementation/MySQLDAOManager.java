@@ -30,9 +30,6 @@ public class MySQLDAOManager implements DAOManager {
     }
 
 
-
-
-
     @Override
     public DriverDAO getDriverDAO() {
         if (drivers == null) {
@@ -40,7 +37,6 @@ public class MySQLDAOManager implements DAOManager {
         }
         return drivers;
     }
-
 
 
     @Override

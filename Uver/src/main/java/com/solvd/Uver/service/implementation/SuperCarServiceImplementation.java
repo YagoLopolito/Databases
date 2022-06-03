@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.util.List;
 
 public class SuperCarServiceImplementation implements SuperCarService {
-    private Connection conn;
+    private final Connection conn;
 
     public SuperCarServiceImplementation(Connection conn) {
         this.conn = conn;

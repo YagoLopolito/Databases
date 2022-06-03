@@ -1,10 +1,7 @@
 package com.solvd.Uver.service.implementation;
 
-import com.solvd.Uver.daos.SuperCarDAO;
 import com.solvd.Uver.daos.SuperMotoDAO;
-import com.solvd.Uver.daos.implementation.MySQLSuperCarDAO;
 import com.solvd.Uver.daos.implementation.MySQLSuperMotoDAO;
-import com.solvd.Uver.entities.SuperCar;
 import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 import com.solvd.Uver.service.SuperMotoService;
@@ -13,7 +10,7 @@ import java.sql.Connection;
 import java.util.List;
 
 public class SuperMotoServiceImplementation implements SuperMotoService {
-    private Connection conn;
+    private final Connection conn;
 
     public SuperMotoServiceImplementation(Connection conn) {
         this.conn = conn;

@@ -1,6 +1,1 @@
-{
-  "idSuperCar":25,
-  "make":"Ford",
-  "model":"KA 2011",
-  "maxSpeed":200
-}
+[{"idSuperCar":0,"maxSpeed":0,"make":null,"model":null},{"idSuperCar":0,"maxSpeed":0,"make":null,"model":null}]
