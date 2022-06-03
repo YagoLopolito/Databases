@@ -9,7 +9,7 @@ import jakarta.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.ArrayList;
 
-public class JAXB {
+public class JAXBRunner {
     public static void main(String[] args) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(OrderList.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();

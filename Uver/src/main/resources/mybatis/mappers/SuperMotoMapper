@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com/solvd/Uver/daos/SuperMotoDAO.java">
-    <resultMap id="SuperMotorcycleResultMap" type="com/solvd/Uver/model/SuperMoto.java" autoMapping="false">
+<mapper namespace="com.solvd.Uver.daos.SuperMotoDAO">
+    <resultMap id="SuperMotorcycleResultMap" type="com.solvd.Uver.entities.SuperMoto" autoMapping="false">
         <result column="super_moto_make" property="make"/>
 
         <result column="super_moto_model" property="model"/>
@@ -16,12 +16,15 @@
     </select>
 
     <delete id="delete">
-
+        DELETE from car WHERE idCar = #{id};
     </delete>
+
     <insert id="save">
 
     </insert>
-    <update id="update">
 
+    <update id="update">
+        UPDATE superMoto SET model = #{model}, make = #{make} WHERE idSuperMoto = #{id};
     </update>
+
 </mapper>

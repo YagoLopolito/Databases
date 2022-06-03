@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com/solvd/Uver/daos/CarDAO.java">
-    <resultMap id="CarResultMap" type="com/solvd/Uver/model/Car.java" autoMapping="false">
-        <result column="car_make" property="make"/>
-
-        <result column="car_model" property="model"/>
+<mapper namespace="com.solvd.Uver.daos.CarDAO">
+    <resultMap id="CarResultMap" type="com.solvd.Uver.entities.Car" autoMapping="false">
+        <result column="idCar" property="idCar"/>
+        <result column="make" property="make"/>
+        <result column="maxSpeed" property="maxSpeed"/>
+        <result column="model" property="model"/>
     </resultMap>
 
     <select id="getById" parameterType="Integer" resultMap="CarResultMap">
-        Select * from car where idCar =#{id}
+        Select * from car where idCar =#{id};
     </select>
 
     <select id="getAll" resultMap="CarResultMap">
@@ -22,6 +23,6 @@
 
     </insert>
     <update id="update">
-
+        UPDATE car SET model = #{model}, make = #{make} WHERE idCar = #{id};
     </update>
 </mapper>

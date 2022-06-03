@@ -1,4 +1,4 @@
-package com.solvd.Uver.connection;
+package com.solvd.Uver.util;
 
 public interface Constants {
 
@@ -9,6 +9,4 @@ public interface Constants {
     String USERNAME = "db.username";
 
     String PASSWORD = "db.pass";
-
-
 }

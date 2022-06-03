@@ -1,10 +1,7 @@
 package com.solvd.Uver.service.implementation;
 
-import com.solvd.Uver.daos.OrderDAO;
 import com.solvd.Uver.daos.SuperCarDAO;
-import com.solvd.Uver.daos.implementation.MySQLOrderDAO;
 import com.solvd.Uver.daos.implementation.MySQLSuperCarDAO;
-import com.solvd.Uver.entities.Order;
 import com.solvd.Uver.entities.SuperCar;
 import com.solvd.Uver.exception.DAOException;
 import com.solvd.Uver.service.SuperCarService;

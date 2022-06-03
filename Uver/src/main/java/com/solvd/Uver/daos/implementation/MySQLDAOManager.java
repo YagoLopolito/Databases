@@ -11,12 +11,8 @@ public class MySQLDAOManager implements DAOManager {
     private final Connection conn;
 
     private CarDAO cars = null;
-    private ClientDAO clients = null;
-    private DeliveryManDAO deliveryMans = null;
     private DriverDAO drivers = null;
-    private EmployeeDAO employees = null;
     private MotorcycleDAO motorcycles = null;
-    private OrderDAO orders = null;
     private SuperCarDAO superCars = null;
     private SuperMotoDAO superMotos = null;
 
@@ -33,21 +29,9 @@ public class MySQLDAOManager implements DAOManager {
         return cars;
     }
 
-    @Override
-    public ClientDAO gerClientDAO() {
-        if (clients == null) {
-            clients = new MySQLClientDAO(conn);
-        }
-        return clients;
-    }
 
-    @Override
-    public DeliveryManDAO getDeliveryManDAO() {
-        if (deliveryMans == null) {
-            deliveryMans = new MySQLDeliveryManDAO(conn);
-        }
-        return deliveryMans;
-    }
+
+
 
     @Override
     public DriverDAO getDriverDAO() {
@@ -57,13 +41,7 @@ public class MySQLDAOManager implements DAOManager {
         return drivers;
     }
 
-    @Override
-    public EmployeeDAO getEmployeeDAO() {
-        if (employees == null) {
-            employees = new MySQLEmployeeDAO(conn);
-        }
-        return employees;
-    }
+
 
     @Override
     public MotorcycleDAO getMotorcycleDAO() {
@@ -73,13 +51,6 @@ public class MySQLDAOManager implements DAOManager {
         return motorcycles;
     }
 
-    @Override
-    public OrderDAO getOrderDAO() {
-        if (orders == null) {
-            orders = new MySQLOrderDAO(conn);
-        }
-        return orders;
-    }
 
     @Override
     public SuperCarDAO getSuperCarDAO() {

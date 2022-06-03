@@ -16,14 +16,14 @@ public class SqlSessionFactoryUtil {
 
     static {
         try {
-            Reader reader = Resources.getResourceAsReader("src/main/resources/mybatis/mybatis-config.xml");
+            Reader reader = Resources.getResourceAsReader("mybatis/mybatis-config.xml");
             setReader(reader);
         } catch (IOException e) {
             LOGGER.info(e.getMessage());
         }
     }
 
-    private static SqlSessionFactory INSTANCE = null;
+    private static SqlSessionFactory INSTANCE;
 
     private SqlSessionFactoryUtil() {
     }

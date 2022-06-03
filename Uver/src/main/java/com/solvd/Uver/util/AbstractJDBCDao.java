@@ -1,4 +1,6 @@
-package com.solvd.Uver.connection;
+package com.solvd.Uver.util;
+
+import com.solvd.Uver.connection.ConnectionPool;
 
 public abstract class AbstractJDBCDao {
 

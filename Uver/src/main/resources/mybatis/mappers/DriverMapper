@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com/solvd/Uver/daos/DriverDAO.java">
-    <resultMap id="DriverResultMap" type="com/solvd/Uver/model/Driver.java" autoMapping="false">
+<mapper namespace="com.solvd.Uver.daos.DriverDAO">
+    <resultMap id="DriverResultMap" type="com.solvd.Uver.entities.Driver" autoMapping="false">
         <result column="driver_first_name" property="firstName"/>
 
         <result column="driver_last_name" property="lastName"/>
@@ -19,12 +19,12 @@
     </select>
 
     <delete id="delete">
-
+        DELETE from driver WHERE idDriver = #{id};
     </delete>
     <insert id="save">
 
     </insert>
     <update id="update">
-
+        UPDATE driver SET firstName = #{firstName}, lastName = #{lastName}, wage = #{wage} WHERE idDriver = #{id};
     </update>
 </mapper>
