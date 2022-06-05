@@ -647,7 +647,7 @@ public class Runner {
                         File file2 = new File("src/main/resources/json/car.json");
 
                         try {
-                            Car car1 = mapper.readValue(file, Car.class);
+                            Car car1 = mapper.readValue(file2, Car.class);
                             log.info(car1);
                         } catch (IOException e) {
                             e.printStackTrace();

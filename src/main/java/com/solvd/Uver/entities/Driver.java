@@ -85,13 +85,15 @@ public class Driver{
 
     @Override
     public String toString() {
-        return "Drivers{" +
-                "idSystemEngineers=" + idDriver +
-                ", wage=" + wage +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", sex='" + sex + '\'' +
-                '}';
+        return  "\n----------------------------------------------------------------\n"
+                +"Driver"
+                + "\nId Driver: " + idDriver
+                + "\nWage: " + wage
+                + "\nFirst name: " + firstName
+                + "\nLast name: " + lastName
+                + "\nSex: " + sex
+                + "\n----------------------------------------------------------------\n"
+                ;
     }
 
 //    @Override

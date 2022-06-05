@@ -67,11 +67,12 @@ public class SuperCar {
 
     @Override
     public String toString() {
-        return "SuperCars{" +
-                "idSuperCar=" + idSuperCar +
-                ", maxSpeed=" + maxSpeed +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                '}';
+        return "\n----------------------------------------------------------------"
+                + "\nSuper Car" + "\nId super car: " + idSuperCar
+                + "\nMake: " + make
+                + "\nModel: " + model
+                + "\nMax speed: " + maxSpeed
+                + "\n----------------------------------------------------------------\n"
+                ;
     }
 }

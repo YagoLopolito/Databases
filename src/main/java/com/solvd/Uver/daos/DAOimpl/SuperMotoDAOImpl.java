@@ -107,7 +107,7 @@ public class SuperMotoDAOImpl extends AbstractJDBCDao implements SuperMotoDAO {
         String model = rs.getString("model");
         Integer maxSpeed = rs.getInt("maxSpeed");
         SuperMotorcycle sMoto = new SuperMotorcycle(make, model, maxSpeed);
-        sMoto.setIdSuperMotorcycle(rs.getInt("idCar"));
+        sMoto.setIdSuperMotorcycle(rs.getInt("idSuperMotorcycle"));
         return sMoto;
     }
 

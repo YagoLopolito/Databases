@@ -67,11 +67,12 @@ public class Moto {
 
     @Override
     public String toString() {
-        return "Moto{" +
-                "idCar=" + idCar +
-                ", maxSpeed=" + maxSpeed +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                '}';
+        return  "\n----------------------------------------------------------------\n"
+                +"Moto" + "\nId moto: " + idCar
+                + "\nMake: " + make
+                + "\nModel: " + model
+                + "\nMax speed: " + maxSpeed
+                + "\n----------------------------------------------------------------\n"
+                ;
     }
 }

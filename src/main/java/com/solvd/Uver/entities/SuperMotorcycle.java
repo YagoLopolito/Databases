@@ -67,11 +67,13 @@ public class SuperMotorcycle {
 
     @Override
     public String toString() {
-        return "SuperMotorcycles{" +
-                "idSuperMotorcycle=" + idSuperMotorcycle +
-                ", maxSpeed=" + maxSpeed +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                '}';
+        return "\n----------------------------------------------------------------\n" +
+                "Super Moto" + "\nId super moto: "
+                + idSuperMotorcycle
+                + "\nMake: " + make
+                + "\nModel: " + model
+                + "\nMax speed: " + maxSpeed
+                + "\n----------------------------------------------------------------\n"
+                ;
     }
 }

@@ -111,7 +111,7 @@ public class SuperCarDAOImpl extends AbstractJDBCDao implements SuperCarDAO {
         String model = rs.getString("model");
         Integer maxSpeed = rs.getInt("maxSpeed");
         SuperCar sCar = new SuperCar(make, model, maxSpeed);
-        sCar.setIdSuperCar(rs.getInt("idCar"));
+        sCar.setIdSuperCar(rs.getInt("idSuperCar"));
         return sCar;
     }
 

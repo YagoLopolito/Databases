@@ -68,12 +68,13 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Cars{" +
-                "idCar=" + idCar +
-                ", maxSpeed=" + maxSpeed +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                '}';
+        return "\n----------------------------------------------------------------\n"
+                +"Car" + "\nId car: " + idCar
+                + "\nMake: " + make
+                + "\nModel: " + model
+                + "\nMax speed: " + maxSpeed
+                +"\n----------------------------------------------------------------\n"
+                ;
     }
 
 }
