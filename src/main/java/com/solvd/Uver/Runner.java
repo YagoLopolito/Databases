@@ -4,22 +4,20 @@ package com.solvd.Uver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.solvd.Uver.entities.*;
 import com.solvd.Uver.exception.DAOException;
+import com.solvd.Uver.service.JacksonImpl;
+import com.solvd.Uver.service.JaxBImpl;
 import com.solvd.Uver.service.jdbcImpl.*;
-import jakarta.xml.bind.JAXBContext;
-import com.solvd.Uver.entities.OrderList;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Unmarshaller;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.solvd.Uver.entities.Order;
-import java.io.File;
-import java.util.ArrayList;
+
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,39 +31,21 @@ public class Runner {
         Moto moto = new Moto();
         SuperCar superCar = new SuperCar();
         SuperMotorcycle superMoto = new SuperMotorcycle();
+        //       Menu
+        //               Menu
+        //                      Menu
         log.info("Do you want to use: \n1-JAXB\n2-MyBatis\n3-JDBC\n4-JSON");
         Scanner scannerOption = new Scanner(System.in);
+//               JaxB
+//                       JaxB
+//                               JaxB
         switch (scannerOption.nextInt()) {
             case 1:
-
-
-                log.info("\nDo you want to:"
-                        + "\n1- See the orders list."
-                        + "\n2- ."
-                        + "\n3- Update an objet."
-                        + "\n4- Get all the objets of the table."
-                        + "\n5- Get an objet by id.");
-                Scanner scannerObject = new Scanner(System.in);
-
-                switch (scannerObject.nextInt()) {
-
-//                    JAXBContext context = JAXBContext.newInstance(OrderList.class);
-//                    Unmarshaller unmarshaller = context.createUnmarshaller();
-//                    OrderList orderList = (OrderList) unmarshaller.unmarshal(new File("src/main/resources/jaxb/Orders.xml"));
-//                    log.info(orderList.getName() + "\n--------------------------------------------------------");
-//
-//                    ArrayList<Order> orders = orderList.getOrders();
-//                    for (Order l : orders) {
-//
-//                        log.info("Order Id: " + l.getIdOrder() + "\nDistance: " + l.getDistance()
-//                                + " Km\nEstimated time of arrival: " + l.getEstimatedTimeOfArrival()
-//                                + " Minutes.\nDestination: " + l.getDestination()
-//                                + "\nIs for transport: " + l.isDriver()
-//                                + "\nIs for mailing: " + l.isMailing()
-//                                + "\n--------------------------------------------------------");
-        }
-
+                log.info("Work in progress.");
                 break;
+//            Mybatis
+//                    Mybatis
+//                          Mybatis
             case 2:
                 Reader reader = Resources.getResourceAsReader("mybatis/mybatis-config.xml");
                 SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
@@ -91,6 +71,11 @@ public class Runner {
                 session.close();
 
                 break;
+
+//                DAO IMPLEMENTATION
+//                          DAO IMPLEMENTATION
+//                                      DAO IMPLEMENTATION
+
             case 3:
                 log.info("\nDo you want to:"
                         + "\n1- Insert an objet in the database."
@@ -394,7 +379,7 @@ public class Runner {
                                 superMoto.setIdSuperMotorcycle(scannerIdSuperMoto.nextInt());
                                 id = superMoto.getIdSuperMotorcycle();
 
-                                log.info("You are updating the driver: " + superMotoS.getById(id));
+                                log.info("You are updating the super moto: " + superMotoS.getById(id));
 
                                 log.info("Introduce a make to update for the Super Moto N°: "
                                         + superMoto.getIdSuperMotorcycle());
@@ -455,19 +440,22 @@ public class Runner {
                             case 1:
 
                                 CarServiceImplementation carS = new CarServiceImplementation();
-                                log.info("The list of cars is as follows.\n" + carS.getAll());
+                                log.info("The car list is loading, please wait...");
+                                log.info("The list of cars is as follows...\n" + carS.getAll());
 
                                 break;
                             case 2:
 
                                 MotorcycleServiceImplementation motoS = new MotorcycleServiceImplementation();
-                                log.info("The list of motos is as follows.\n" + motoS.getAll());
+                                log.info("The motorcycle list is loading, please wait...");
+                                log.info("The list of motos is as follows...\n" + motoS.getAll());
 
                                 break;
 
                             case 3:
 
                                 SuperCarServiceImplementation superCarS = new SuperCarServiceImplementation();
+                                log.info("The super car list is loading, please wait...");
                                 log.info("The list of super cars is as follows...\n" + superCarS.getAll());
 
                                 break;
@@ -475,12 +463,14 @@ public class Runner {
                             case 4:
 
                                 SuperMotoServiceImplementation superMotoS = new SuperMotoServiceImplementation();
+                                log.info("The super moto list is loading, please wait...");
                                 log.info("The list of super motos is as follows...\n" + superMotoS.getAll());
 
                                 break;
 
                             case 5:
                                 DriverServiceImplementation driverS = new DriverServiceImplementation();
+                                log.info("The driver list is loading, please wait...");
                                 log.info("The list of drivers is as follows...\n" + driverS.getAll());
 
                                 break;
@@ -505,6 +495,7 @@ public class Runner {
                                 int id = 0;
                                 id = scannerGetByIdCar.nextInt();
                                 car.setIdCar(id);
+                                log.info("The car is loading, please wait...");
                                 log.info("The car is as follows...\n" + carS.getById(id));
 
                                 break;
@@ -515,6 +506,7 @@ public class Runner {
                                 log.info("Enter the id of the moto you want to see from the database: ");
                                 id = scannerGetByIdMoto.nextInt();
                                 moto.setIdCar(id);
+                                log.info("The moto is loading, please wait...");
                                 log.info("The moto is as follows...\n" + motoS.getById(id));
 
                                 break;
@@ -526,6 +518,7 @@ public class Runner {
                                 log.info("Enter the id of the super car you want to see from the database: ");
                                 id = scannerGetByIdSuperCar.nextInt();
                                 superCar.setIdSuperCar(id);
+                                log.info("The super car is loading, please wait...");
                                 log.info("The super car is as follows...\n" + superCarS.getById(id));
                                 break;
 
@@ -536,6 +529,7 @@ public class Runner {
                                 log.info("Enter the id of the super moto you want to see from the database: ");
                                 id = scannerGetByIdSuperMoto.nextInt();
                                 superMoto.setIdSuperMotorcycle(id);
+                                log.info("The super moto is loading, please wait...");
                                 log.info("The super moto is as follows...\n" + superMotoS.getById(id));
 
                                 break;
@@ -546,7 +540,8 @@ public class Runner {
                                 log.info("Enter the id of the driver you want to see from the database: ");
                                 id = scannerGetByIdDriver.nextInt();
                                 driver.setIdDriver(id);
-                                log.info("The super moto is as follows...\n" + driverS.getById(id));
+                                log.info("The driver is loading, please wait...");
+                                log.info("The driver is as follows...\n" + driverS.getById(id));
                                 break;
 
                         }
@@ -556,9 +551,10 @@ public class Runner {
                 }
 
                 break;
-            case 4:
-                ObjectMapper mapper = new ObjectMapper();
 
+            case 4:
+
+                JacksonImpl jackson = new JacksonImpl();
                 log.info("\nDo you want to:"
                         + "\n1- Write a list of super cars in JSON."
                         + "\n2- Read a the list of super cars in JSON."
@@ -568,7 +564,7 @@ public class Runner {
 
                 switch (scannerObject3.nextInt()) {
                     case 1:
-                        int cant = 0;
+                        int cant;
                         Scanner scannerCant = new Scanner(System.in);
                         log.info("\nHow many super cars do you want to add?");
                         cant = scannerCant.nextInt() - 1;
@@ -578,7 +574,7 @@ public class Runner {
                             Scanner scannerMakeSuperCarJSON = new Scanner(System.in);
                             Scanner scannerModelSuperCarJSON = new Scanner(System.in);
                             Scanner scannerMaxSpeedSuperCarJSON = new Scanner(System.in);
-
+                            superCarJSON.setIdSuperCar(i);
                             log.info("\nWrite the car make.");
                             superCarJSON.setMake(scannerMakeSuperCarJSON.nextLine());
 
@@ -591,26 +587,28 @@ public class Runner {
 
                             superCars.add(superCarJSON);
                         }
-                        try {
-                            mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/resources/json/superCars.json"), superCars);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                        jackson.marshallSuperCar(superCars);
 
+                        Scanner scannerJackson = new Scanner(System.in);
+                        log.info("Did you want to read it?\n1-Yes.\n2-No.");
+
+                        switch (scannerJackson.nextInt()) {
+
+                            case 1:
+                                List<SuperCar> superCars1;
+                                superCars1 = jackson.unmarshallSuperCar();
+                                log.info(superCars1);
+                                break;
+                            case 2:
+                                log.info("Closing...");
+                                break;
+                        }
                         break;
 
                     case 2:
-
-                        File file = new File("src/main/resources/json/superCars.json");
-
-                        try {
-                           SuperCar sCar1 = mapper.readValue(file, SuperCar.class);
-                            log.info(sCar1);
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
+                        List<SuperCar> superCars1;
+                        superCars1 = jackson.unmarshallSuperCar();
+                        log.info(superCars1);
                         break;
 
                     case 3:
@@ -624,6 +622,8 @@ public class Runner {
                             Scanner scannerMakeCarJSON = new Scanner(System.in);
                             Scanner scannerModelCarJSON = new Scanner(System.in);
                             Scanner scannerMaxSpeedCarJSON = new Scanner(System.in);
+                            CarJSON.setIdCar(i);
+
 
                             log.info("\nWrite the car make.");
                             CarJSON.setMake(scannerMakeCarJSON.nextLine());
@@ -637,26 +637,26 @@ public class Runner {
 
                             cars.add(CarJSON);
                         }
-                        try {
-                            mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/resources/json/car.json"), cars);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+                        jackson.marshallCar(cars);
+                        Scanner scannerJackson2 = new Scanner(System.in);
+                        log.info("Did you want to read it?\n1-Yes.\n2-No.");
+                        switch (scannerJackson2.nextInt()) {
+                            case 1:
+                                List<Car> cars2;
+                                cars2 = jackson.unmarshallCar();
+                                log.info(cars2);
+                                break;
+                            case 2:
+                                log.info("Closing...");
+                                break;
                         }
                         break;
                     case 4:
-                        File file2 = new File("src/main/resources/json/car.json");
-
-                        try {
-                            Car car1 = mapper.readValue(file2, Car.class);
-                            log.info(car1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        List<Car> cars2;
+                        cars2 = jackson.unmarshallCar();
+                        log.info(cars2);
                         break;
-
                 }
-
-
         }
     }
 }

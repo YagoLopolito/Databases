@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SuperCarDAOImpl extends AbstractJDBCDao implements SuperCarDAO {
-    private final static String INSERT = "INSERT INTO superCar(idSuperCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    private final static String UPDATE = "UPDATE superCar SET make = ?, model = ?, maxSpeed = ? WHERE idSuperCar = ?";
+    private final static String INSERT = "INSERT INTO supercar(idSuperCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE supercar SET make = ?, model = ?, maxSpeed = ? WHERE idSuperCar = ?";
     private final static String DELETE = "DELETE FROM superCar WHERE idSuperCar = ?";
-    private final static String GET_ALL = "SELECT idSuperCar, make, model, maxSpeed FROM superCar";
-    private final static String GET_ONE = "SELECT idSuperCar, make, model, maxSpeed FROM superCar WHERE idSuperCar = ?";
+    private final static String GET_ALL = "SELECT idSuperCar, make, model, maxSpeed FROM supercar";
+    private final static String GET_ONE = "SELECT idSuperCar, make, model, maxSpeed FROM supercar WHERE idSuperCar = ?";
 
     @Override
     public void insert(SuperCar a) throws DAOException, ConnectException {

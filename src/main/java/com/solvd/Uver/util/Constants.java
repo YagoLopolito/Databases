@@ -9,4 +9,5 @@ public interface Constants {
     String USERNAME = "db.username";
 
     String PASSWORD = "db.pass";
+
 }

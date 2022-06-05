@@ -16,7 +16,7 @@ public class MyBatisRunner {
     private static final Logger log = LogManager.getLogger(Runner.class);
 
     public static void main(String[] args) throws IOException {
-        int i = 1;
+
         Reader reader = Resources.getResourceAsReader("mybatis/mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         SqlSession session = sqlSessionFactory.openSession();

@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MotorcycleDAOImpl extends AbstractJDBCDao implements MotorcycleDAO {
-    private final static String INSERT = "INSERT INTO motorcycle(idMotorcycle, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    private final static String UPDATE = "UPDATE motorcycle SET model = ?, maxSpeed = ? WHERE idMotorcycle = ?";
-    private final static String DELETE = "DELETE FROM motorcycle WHERE idMotorcycle = ?";
-    private final static String GET_ALL = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle";
-    private final static String GET_ONE = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle WHERE idMotorcycle = ?";
+    private final static String INSERT = "INSERT INTO motorcycle(idCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE motorcycle SET model = ?, maxSpeed = ? WHERE idCar = ?";
+    private final static String DELETE = "DELETE FROM motorcycle WHERE idCar = ?";
+    private final static String GET_ALL = "SELECT idCar, make, model, maxSpeed FROM motorcycle";
+    private final static String GET_ONE = "SELECT idCar, make, model, maxSpeed FROM motorcycle WHERE idCar = ?";
 
     @Override
     public void insert(Moto a) throws DAOException, ConnectException {

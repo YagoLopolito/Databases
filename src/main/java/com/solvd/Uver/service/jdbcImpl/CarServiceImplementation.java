@@ -4,7 +4,7 @@ import com.solvd.Uver.daos.CarDAO;
 import com.solvd.Uver.daos.DAOimpl.CarDAOImpl;
 import com.solvd.Uver.entities.Car;
 import com.solvd.Uver.exception.DAOException;
-import com.solvd.Uver.service.CarService;
+import com.solvd.Uver.service.daoServices.CarService;
 
 import java.net.ConnectException;
 import java.util.List;

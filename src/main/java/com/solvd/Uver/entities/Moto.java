@@ -7,6 +7,9 @@ public class Moto {
     String make, model;
 
     public Moto(String make, String model, Integer maxSpeed) {
+        this.make = make;
+        this.model = model;
+        this.maxSpeed = maxSpeed;
     }
 
     public Moto(int idCar, int maxSpeed, String make, String model) {

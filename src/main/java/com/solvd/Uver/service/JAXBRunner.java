@@ -1,4 +1,4 @@
-package com.solvd.Uver.service.jaxb;
+package com.solvd.Uver.service;
 
 import com.solvd.Uver.Runner;
 import com.solvd.Uver.entities.Order;
@@ -32,4 +32,3 @@ public class JAXBRunner {
         }
     }
 }
-

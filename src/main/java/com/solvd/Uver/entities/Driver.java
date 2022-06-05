@@ -11,7 +11,6 @@ public class Driver{
     String firstName, lastName, sex;
 
     public Driver(String firstName, String lastName, Integer wage) {
-
         this.wage = wage;
         this.firstName = firstName;
         this.lastName = lastName;

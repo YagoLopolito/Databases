@@ -7,6 +7,9 @@ public class SuperMotorcycle {
     String make, model;
 
     public SuperMotorcycle(String make, String model, Integer maxSpeed) {
+        this.make = make;
+        this.model = model;
+        this.maxSpeed = maxSpeed;
     }
 
     public SuperMotorcycle(int idSuperMotorcycle, int maxSpeed, String make, String model) {

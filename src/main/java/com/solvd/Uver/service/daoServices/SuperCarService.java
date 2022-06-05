@@ -1,4 +1,4 @@
-package com.solvd.Uver.service;
+package com.solvd.Uver.service.daoServices;
 
 
 import com.solvd.Uver.entities.SuperCar;

@@ -1,11 +1,1 @@
-[ {
-  "idSuperCar" : 0,
-  "maxSpeed" : 132,
-  "make" : "pepe",
-  "model" : "argent"
-}, {
-  "idSuperCar" : 0,
-  "maxSpeed" : 123,
-  "make" : "saske ",
-  "model" : "pene"
-} ]
+[{"idSuperCar":0,"maxSpeed":213,"make":"Argusto petans","model":"Polish"},{"idSuperCar":1,"maxSpeed":163,"make":"KAKANUETE","model":"PETANS"}]

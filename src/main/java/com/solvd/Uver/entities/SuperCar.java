@@ -7,6 +7,10 @@ public class SuperCar {
     String make, model;
 
     public SuperCar(String make, String model, Integer maxSpeed) {
+        this.idSuperCar = idSuperCar;
+        this.make = make;
+        this.model = model;
+        this.maxSpeed = maxSpeed;
     }
 
     public SuperCar(int idSuperCar, int maxSpeed, String make, String model) {

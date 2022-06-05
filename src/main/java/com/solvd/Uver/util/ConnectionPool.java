@@ -14,7 +14,7 @@ public class ConnectionPool {
     private final String USER = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.USERNAME);
     private final String PASS = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.PASSWORD);
     private static ConnectionPool datasource;
-    private BasicDataSource basicDataSource = null;
+    private BasicDataSource basicDataSource;
 
 
     private final static int MAX_CONNECTIONS = com.solvd.Uver.util.DBPropertiesUtil.getInt(Constants.MAX_CONNECTIONS);
