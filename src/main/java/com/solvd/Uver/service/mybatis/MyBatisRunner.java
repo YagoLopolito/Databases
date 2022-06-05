@@ -1,5 +1,6 @@
-package com.solvd.Uver;
+package com.solvd.Uver.service.mybatis;
 
+import com.solvd.Uver.Runner;
 import com.solvd.Uver.entities.Car;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class MyBatisRunner {
-    private static final Logger l = LogManager.getLogger(Runner.class);
+    private static final Logger log = LogManager.getLogger(Runner.class);
 
     public static void main(String[] args) throws IOException {
         int i = 1;
@@ -20,17 +21,17 @@ public class MyBatisRunner {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         SqlSession session = sqlSessionFactory.openSession();
         Car car = session.selectOne("getById", 3);
-        l.info("\n-------------CARS---------------\nCar Id: "
+        log.info("\n-------------CARS---------------\nCar Id: "
                 + car.getIdCar() + "\nMake: "
                 + car.getMake() + "\nModel: " + car.getModel()
                 + "\nMax Speed: " + car.getMaxSpeed());
         Car car2 = session.selectOne("getById", 1);
-        l.info("\n---------------------------------\nCar Id: "
+        log.info("\n---------------------------------\nCar Id: "
                 + car2.getIdCar() + "\nMake: "
                 + car2.getMake() + "\nModel: " + car2.getModel()
                 + "\nMax Speed: " + car2.getMaxSpeed());
         Car car3 = session.selectOne("getById", 5);
-        l.info("\n--------------------------------\nCar Id: "
+        log.info("\n--------------------------------\nCar Id: "
                 + car3.getIdCar() + "\nMake: "
                 + car3.getMake() + "\nModel: " + car3.getModel()
                 + "\nMax Speed: " + car3.getMaxSpeed()

@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class Car {
     int idCar, maxSpeed;
-    String make, model;
+    String make;
+    String model;
 
     public Car(String make, String model, Integer maxSpeed) {
     }

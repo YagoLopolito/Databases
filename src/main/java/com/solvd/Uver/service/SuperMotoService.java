@@ -3,18 +3,19 @@ package com.solvd.Uver.service;
 import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 
+import java.net.ConnectException;
 import java.util.List;
 
 public interface SuperMotoService {
 
-    void give(SuperMotorcycle a) throws DAOException;
+    void insert(SuperMotorcycle a) throws DAOException, ConnectException;
 
-    void delete(int id) throws DAOException;
+    void deleteById(int id) throws DAOException, ConnectException;
 
-    void modify(SuperMotorcycle entities) throws DAOException;
+    void update(SuperMotorcycle a) throws DAOException, ConnectException;
 
-    SuperMotorcycle getOne(int id) throws DAOException;
+    SuperMotorcycle getById(int id) throws DAOException, ConnectException;
 
-    List<SuperMotorcycle> getAll() throws DAOException;
+    List<SuperMotorcycle> getAll() throws DAOException, ConnectException;
 
 }

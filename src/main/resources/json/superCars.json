@@ -1,0 +1,11 @@
+[ {
+  "idSuperCar" : 0,
+  "maxSpeed" : 132,
+  "make" : "pepe",
+  "model" : "argent"
+}, {
+  "idSuperCar" : 0,
+  "maxSpeed" : 123,
+  "make" : "saske ",
+  "model" : "pene"
+} ]

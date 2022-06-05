@@ -1,0 +1,11 @@
+[ {
+  "idCar" : 0,
+  "maxSpeed" : 12312,
+  "make" : "pepeto",
+  "model" : "marcelo"
+}, {
+  "idCar" : 0,
+  "maxSpeed" : 32,
+  "make" : "caki",
+  "model" : "soso"
+} ]

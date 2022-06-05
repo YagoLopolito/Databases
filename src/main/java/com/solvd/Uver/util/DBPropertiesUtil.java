@@ -10,15 +10,12 @@ import java.util.Properties;
 
 public class DBPropertiesUtil {
 
-    private final static Logger LOG = LogManager.getLogger(DBPropertiesUtil.class);
-
     private static final Properties properties = new Properties();
     private static final DBPropertiesUtil dbPropertiesUtil = new DBPropertiesUtil();
 
-
     private DBPropertiesUtil() {
         try {
-            properties.load(new FileReader("src/main/resources/db.properties"));
+            properties.load(new FileReader("src/main/resources/db.properties.properties"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -29,7 +26,6 @@ public class DBPropertiesUtil {
     public static String getString(String key) {
         return properties.getProperty(key);
     }
-
 
     public static int getInt(String key) {
         return Integer.parseInt(properties.getProperty(key));

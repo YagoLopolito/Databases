@@ -4,16 +4,17 @@ package com.solvd.Uver.service;
 import com.solvd.Uver.entities.SuperCar;
 import com.solvd.Uver.exception.DAOException;
 
+import java.net.ConnectException;
 import java.util.List;
 
 public interface SuperCarService {
-    void give(SuperCar a) throws DAOException;
+    void insert(SuperCar a) throws DAOException, ConnectException;
 
-    void delete(int id) throws DAOException;
+    void deleteById(int id) throws DAOException, ConnectException;
 
-    void modify(SuperCar entities) throws DAOException;
+    void update(SuperCar a) throws DAOException, ConnectException;
 
-    SuperCar getOne(int id) throws DAOException;
+    SuperCar getById(int id) throws DAOException, ConnectException;
 
-    List<SuperCar> getAll() throws DAOException;
+    List<SuperCar> getAll() throws DAOException, ConnectException;
 }

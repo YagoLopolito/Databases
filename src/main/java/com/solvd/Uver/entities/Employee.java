@@ -1,12 +1,15 @@
 package com.solvd.Uver.entities;
 
+import com.solvd.Uver.exception.DAOException;
+
+import java.net.ConnectException;
 import java.util.Objects;
 
-public class Employee {
+public abstract class Employee {
     int idEmployees, wage;
     String firstName, lastName, position;
 
-    public Employee(String firstName, String lastName, String position, Integer wage) {
+    public Employee(String firstName, String lastName, Integer wage) {
     }
 
     public Employee(int idEmployees, int wage, String firstName, String lastName, String position) {
@@ -80,4 +83,6 @@ public class Employee {
                 ", position='" + position + '\'' +
                 '}';
     }
+
+    public abstract void insert() throws DAOException, ConnectException;
 }

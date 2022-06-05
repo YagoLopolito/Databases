@@ -16,6 +16,10 @@ public class Moto {
         this.model = model;
     }
 
+    public Moto() {
+
+    }
+
     public int getIdCar() {
         return idCar;
     }

@@ -1,20 +1,33 @@
 package com.solvd.Uver.entities;
 
+import com.solvd.Uver.daos.DAOimpl.DriverDAOImpl;
+import com.solvd.Uver.exception.DAOException;
+
+import java.net.ConnectException;
 import java.util.Objects;
 
-public class Driver {
+public class Driver{
     int idDriver, wage;
     String firstName, lastName, sex;
 
     public Driver(String firstName, String lastName, Integer wage) {
+
+        this.wage = wage;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Driver(int idDriver, int wage, String firstName, String lastName, String sex) {
+
         this.idDriver = idDriver;
         this.wage = wage;
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
+    }
+
+    public Driver() {
+
     }
 
     public int getIdDriver() {
@@ -80,4 +93,10 @@ public class Driver {
                 ", sex='" + sex + '\'' +
                 '}';
     }
+
+//    @Override
+//    public void insert() throws DAOException, ConnectException {
+//        DriverDAOImpl ddi=new DriverDAOImpl();
+//        ddi.insert(this);
+//    }
 }

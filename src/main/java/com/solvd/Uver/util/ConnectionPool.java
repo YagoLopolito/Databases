@@ -1,6 +1,6 @@
-package com.solvd.Uver.connection;
+package com.solvd.Uver.util;
 
-import com.solvd.Uver.util.Constants;
+import com.solvd.Uver.exception.ConnectionException;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConnectionPool {
+
     private final String URL = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.URL);
     private final String USER = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.USERNAME);
     private final String PASS = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.PASSWORD);

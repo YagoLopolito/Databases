@@ -1,37 +1,33 @@
-package com.solvd.Uver.service.implementation;
+package com.solvd.Uver.service.jdbcImpl;
 
 import com.solvd.Uver.daos.CarDAO;
-import com.solvd.Uver.daos.implementation.MySQLCarDAO;
+import com.solvd.Uver.daos.DAOimpl.CarDAOImpl;
 import com.solvd.Uver.entities.Car;
 import com.solvd.Uver.exception.DAOException;
 import com.solvd.Uver.service.CarService;
 
-import java.sql.Connection;
+import java.net.ConnectException;
 import java.util.List;
 
 public class CarServiceImplementation implements CarService {
-    private final Connection conn;
 
-    public CarServiceImplementation(Connection conn) {
-        this.conn = conn;
-    }
 
     @Override
-    public void give(Car a) {
-        CarDAO cars = new MySQLCarDAO(conn);
+    public void insert(Car a) {
+        CarDAO cars = new CarDAOImpl();
         try {
             cars.insert(a);
-        } catch (DAOException e) {
+        } catch (DAOException | ConnectException e) {
             e.printStackTrace();
         }
 
     }
 
     @Override
-    public void modify(Car entities) {
-        CarDAO cars = new MySQLCarDAO(conn);
+    public void update(Car a) throws ConnectException {
+        CarDAO cars = new CarDAOImpl();
         try {
-            cars.modify(entities);
+            cars.update(a);
         } catch (DAOException e) {
             e.printStackTrace();
         }
@@ -39,21 +35,21 @@ public class CarServiceImplementation implements CarService {
 
 
     @Override
-    public void delete(int id) {
-        CarDAO cars = new MySQLCarDAO(conn);
+    public void deleteById(int id) throws ConnectException {
+        CarDAO cars = new CarDAOImpl();
         try {
-            cars.delete(id);
+            cars.deleteById(id);
         } catch (DAOException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public Car getOne(int id) {
-        CarDAO cars = new MySQLCarDAO(conn);
+    public Car getById(int id) throws ConnectException {
+        CarDAO cars = new CarDAOImpl();
         Car car = null;
         try {
-            car = cars.give(id);
+            car = cars.getById(id);
 
         } catch (DAOException e) {
             e.printStackTrace();
@@ -62,11 +58,11 @@ public class CarServiceImplementation implements CarService {
     }
 
     @Override
-    public List<Car> getAll() {
-        CarDAO cars = new MySQLCarDAO(conn);
+    public List<Car> getAll() throws ConnectException {
+        CarDAO cars = new CarDAOImpl();
         List<Car> carList = null;
         try {
-            carList = cars.giveAll();
+            carList = cars.getAll();
         } catch (DAOException e) {
             e.printStackTrace();
         }

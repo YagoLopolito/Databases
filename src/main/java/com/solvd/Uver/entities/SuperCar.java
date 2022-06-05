@@ -16,6 +16,10 @@ public class SuperCar {
         this.model = model;
     }
 
+    public SuperCar() {
+
+    }
+
     public int getIdSuperCar() {
         return idSuperCar;
     }

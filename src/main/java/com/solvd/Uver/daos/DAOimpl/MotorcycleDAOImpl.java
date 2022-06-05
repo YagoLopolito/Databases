@@ -1,9 +1,12 @@
-package com.solvd.Uver.daos.implementation;
+package com.solvd.Uver.daos.DAOimpl;
 
-import com.solvd.Uver.daos.SuperCarDAO;
-import com.solvd.Uver.entities.SuperCar;
+import com.solvd.Uver.daos.MotorcycleDAO;
+import com.solvd.Uver.entities.Car;
+import com.solvd.Uver.entities.Moto;
+import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 
+import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,24 +14,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLSuperCarDAO implements SuperCarDAO {
-    private final static String INSERT = "INSERT INTO superCar(idSuperCar, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
-    private final static String UPDATE = "UPDATE superCar SET idSuperCar = ?, make = ?, model = ?, maxSpeed = ? WHERE idSuperCar = ?";
-    private final static String DELETE = "DELETE FROM superCar WHERE idSuperCar = ?";
-    private final static String GET_ALL = "SELECT idSuperCar, make, model, maxSpeed FROM superCar";
-    private final static String GET_ONE = "SELECT idSuperCar, make, model, maxSpeed FROM superCar WHERE idSuperCar = ?";
-    private final Connection conn;
-
-    public MySQLSuperCarDAO(Connection conn) {
-        this.conn = conn;
-    }
+public class MotorcycleDAOImpl extends AbstractJDBCDao implements MotorcycleDAO {
+    private final static String INSERT = "INSERT INTO motorcycle(idMotorcycle, make, model, maxSpeed) VALUES(?, ?, ?, ?)";
+    private final static String UPDATE = "UPDATE motorcycle SET model = ?, maxSpeed = ? WHERE idMotorcycle = ?";
+    private final static String DELETE = "DELETE FROM motorcycle WHERE idMotorcycle = ?";
+    private final static String GET_ALL = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle";
+    private final static String GET_ONE = "SELECT idMotorcycle, make, model, maxSpeed FROM motorcycle WHERE idMotorcycle = ?";
 
     @Override
-    public void insert(SuperCar a) throws DAOException {
+    public void insert(Moto a) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         try {
             stat = conn.prepareStatement(INSERT);
-            stat.setInt(1, a.getIdSuperCar());
+            stat.setInt(1, a.getIdCar());
             stat.setString(2, a.getMake());
             stat.setString(3, a.getModel());
             stat.setInt(4, a.getMaxSpeed());
@@ -40,7 +39,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         } catch (SQLException e) {
             throw new DAOException("Error in SQL", e);
         } finally {
-
+            returnConnection(conn);
             if (stat != null) {
                 try {
                     stat.close();
@@ -52,12 +51,11 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
     }
 
     @Override
-    public void delete(int a) throws DAOException {
+    public void deleteById(int id) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         try {
             stat = conn.prepareStatement(DELETE);
-            stat.setInt(1, a);
-
 
             if (stat.executeUpdate() == 0) {
                 throw new DAOException("May not have been saved");
@@ -66,7 +64,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         } catch (SQLException e) {
             throw new DAOException("Error in SQL", e);
         } finally {
-
+            returnConnection(conn);
             if (stat != null) {
                 try {
                     stat.close();
@@ -77,12 +75,14 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         }
     }
 
+
     @Override
-    public void modify(SuperCar a) throws DAOException {
+    public void update(Moto a) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         try {
             stat = conn.prepareStatement(UPDATE);
-            stat.setInt(1, a.getIdSuperCar());
+            stat.setInt(1, a.getIdCar());
             stat.setString(2, a.getMake());
             stat.setString(3, a.getModel());
             stat.setInt(4, a.getMaxSpeed());
@@ -94,7 +94,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         } catch (SQLException e) {
             throw new DAOException("Error in SQL", e);
         } finally {
-
+            returnConnection(conn);
             if (stat != null) {
                 try {
                     stat.close();
@@ -106,29 +106,31 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
     }
 
 
-    private SuperCar convert(ResultSet rs) throws SQLException {
+    private Moto convert(ResultSet rs) throws SQLException {
         String make = rs.getString("make");
         String model = rs.getString("model");
         Integer maxSpeed = rs.getInt("maxSpeed");
-        SuperCar sCar = new SuperCar(make, model, maxSpeed);
-        sCar.setIdSuperCar(rs.getInt("idCar"));
-        return sCar;
+        Moto moto = new Moto(make, model, maxSpeed);
+        moto.setIdCar(rs.getInt("idCar"));
+        return moto;
     }
 
     @Override
-    public List<SuperCar> giveAll() throws DAOException {
+    public List<Moto> getAll() throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         ResultSet rs = null;
-        List<SuperCar> sCars = new ArrayList<>();
+        List<Moto> motos = new ArrayList<>();
         try {
             stat = conn.prepareStatement(GET_ALL);
             rs = stat.executeQuery();
             while (rs.next()) {
-                sCars.add(convert(rs));
+                motos.add(convert(rs));
             }
         } catch (SQLException e) {
             throw new DAOException("SQL Erorr", e);
         } finally {
+            returnConnection(conn);
             if (rs != null) {
                 try {
                     rs.close();
@@ -145,14 +147,15 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
             }
 
         }
-        return sCars;
+        return motos;
     }
 
     @Override
-    public SuperCar give(Integer id) throws DAOException {
+    public Moto getById(int id) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         ResultSet rs = null;
-        SuperCar a = null;
+        Moto a = null;
         try {
             stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
@@ -166,6 +169,7 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         } catch (SQLException e) {
             throw new DAOException("SQL Erorr", e);
         } finally {
+            returnConnection(conn);
             if (rs != null) {
                 try {
                     rs.close();
@@ -185,3 +189,4 @@ public class MySQLSuperCarDAO implements SuperCarDAO {
         return a;
     }
 }
+

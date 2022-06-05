@@ -1,4 +1,4 @@
-package com.solvd.Uver.connection;
+package com.solvd.Uver.exception;
 
 public class ConnectionException extends RuntimeException {
 

@@ -1,9 +1,11 @@
-package com.solvd.Uver.daos.implementation;
+package com.solvd.Uver.daos.DAOimpl;
 
 import com.solvd.Uver.daos.DriverDAO;
 import com.solvd.Uver.entities.Driver;
+import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 
+import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,21 +13,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLDriverDAO implements DriverDAO {
+public class DriverDAOImpl extends AbstractJDBCDao implements DriverDAO {
     private final static String INSERT = "INSERT INTO driver(idDriver, firstName, lastName, wage) VALUES(?, ?, ?, ?)";
-    private final static String UPDATE = "UPDATE driver SET idCar = ?, firstName = ?, lastName = ?, wage = ? WHERE idDriver = ?";
+    private final static String UPDATE = "UPDATE driver SET firstName = ?, lastName = ?, wage = ? WHERE idDriver = ?";
     private final static String DELETE = "DELETE FROM driver WHERE idDriver = ?";
     private final static String GET_ALL = "SELECT idDriver, firstName, lastName, wage FROM driver";
     private final static String GET_ONE = "SELECT idDriver, firstName, lastName, wage FROM driver WHERE idDriver = ?";
-    private final Connection conn;
 
-    public MySQLDriverDAO(Connection conn) {
-        this.conn = conn;
-    }
+
+
 
     @Override
-    public void insert(Driver a) throws DAOException {
+    public void insert(Driver a) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         try {
             stat = conn.prepareStatement(INSERT);
             stat.setInt(1, a.getIdDriver());
@@ -40,7 +41,7 @@ public class MySQLDriverDAO implements DriverDAO {
         } catch (SQLException e) {
             throw new DAOException("Error in SQL", e);
         } finally {
-
+            returnConnection(conn);
             if (stat != null) {
                 try {
                     stat.close();
@@ -53,11 +54,12 @@ public class MySQLDriverDAO implements DriverDAO {
 
 
     @Override
-    public void delete(int a) throws DAOException {
+    public void deleteById(int id) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         try {
             stat = conn.prepareStatement(DELETE);
-            stat.setInt(1, a);
+            stat.setInt(1, id);
             if (stat.executeUpdate() == 0) {
                 throw new DAOException("May not have been saved");
             }
@@ -65,7 +67,7 @@ public class MySQLDriverDAO implements DriverDAO {
         } catch (SQLException e) {
             throw new DAOException("Error in SQL", e);
         } finally {
-
+            returnConnection(conn);
             if (stat != null) {
                 try {
                     stat.close();
@@ -78,14 +80,15 @@ public class MySQLDriverDAO implements DriverDAO {
 
 
     @Override
-    public void modify(Driver a) throws DAOException {
+    public void update(Driver a) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         try {
             stat = conn.prepareStatement(UPDATE);
-            stat.setInt(1, a.getIdDriver());
-            stat.setString(2, a.getFirstName());
-            stat.setString(3, a.getLastName());
-            stat.setInt(4, a.getWage());
+            stat.setString(1, a.getFirstName());
+            stat.setString(2, a.getLastName());
+            stat.setInt(3, a.getWage());
+            stat.setInt(4, a.getIdDriver());
 
             if (stat.executeUpdate() == 0) {
                 throw new DAOException("May not have been saved");
@@ -94,7 +97,7 @@ public class MySQLDriverDAO implements DriverDAO {
         } catch (SQLException e) {
             throw new DAOException("Error in SQL", e);
         } finally {
-
+            returnConnection(conn);
             if (stat != null) {
                 try {
                     stat.close();
@@ -116,8 +119,9 @@ public class MySQLDriverDAO implements DriverDAO {
     }
 
     @Override
-    public List<Driver> giveAll() throws DAOException {
+    public List<Driver> getAll() throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         ResultSet rs = null;
         List<Driver> drivers = new ArrayList<>();
         try {
@@ -129,6 +133,7 @@ public class MySQLDriverDAO implements DriverDAO {
         } catch (SQLException e) {
             throw new DAOException("SQL Erorr", e);
         } finally {
+            returnConnection(conn);
             if (rs != null) {
                 try {
                     rs.close();
@@ -149,10 +154,11 @@ public class MySQLDriverDAO implements DriverDAO {
     }
 
     @Override
-    public Driver give(Integer id) throws DAOException {
+    public Driver getById(int id) throws DAOException, ConnectException {
         PreparedStatement stat = null;
+        Connection conn = getConnection();
         ResultSet rs = null;
-        Driver a = null;
+        Driver a;
         try {
             stat = conn.prepareStatement(GET_ONE);
             stat.setInt(1, id);
@@ -166,6 +172,7 @@ public class MySQLDriverDAO implements DriverDAO {
         } catch (SQLException e) {
             throw new DAOException("SQL Erorr", e);
         } finally {
+            returnConnection(conn);
             if (rs != null) {
                 try {
                     rs.close();

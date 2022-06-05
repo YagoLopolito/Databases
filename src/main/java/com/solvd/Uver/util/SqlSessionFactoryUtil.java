@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class SqlSessionFactoryUtil {
-    private static final Logger LOGGER = LogManager.getLogger(SqlSessionFactoryUtil.class);
+    private static final Logger log = LogManager.getLogger(SqlSessionFactoryUtil.class);
     private static final SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
     private static Reader reader;
 
@@ -19,7 +19,7 @@ public class SqlSessionFactoryUtil {
             Reader reader = Resources.getResourceAsReader("mybatis/mybatis-config.xml");
             setReader(reader);
         } catch (IOException e) {
-            LOGGER.info(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 
