@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 @XmlRootElement(name = "orderList")
-@XmlType(propOrder = {"name", "orders"})
 public class OrderList {
     String name;
     private ArrayList<Order> orders = new ArrayList();
@@ -26,12 +25,13 @@ public class OrderList {
         this.name = name;
     }
 
-    @XmlElementWrapper(name = "orders")
-    @XmlElement(name = "order")
+
     public ArrayList<Order> getOrders() {
         return orders;
     }
 
+    @XmlElementWrapper(name = "orders")
+    @XmlElement(name = "order")
     public void setOrders(ArrayList<Order> orders) {
         this.orders = orders;
     }

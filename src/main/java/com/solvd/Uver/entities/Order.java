@@ -15,7 +15,12 @@ public class Order {
     String destination;
     boolean isMailing, isDriver;
 
-    public Order(String destination, Integer distance, Integer estimatedTimeOfArrival) {
+    public Order(String destination, Integer distance, Integer estimatedTimeOfArrival, boolean isMailing,boolean isDriver ) {
+        this.destination = destination;
+        this.distance = distance;
+        this.estimatedTimeOfArrival = estimatedTimeOfArrival;
+        this.isMailing = isMailing;
+        this.isDriver = isDriver;
     }
 
     public Order() {
@@ -30,11 +35,11 @@ public class Order {
         this.isDriver = isDriver;
     }
 
-    @XmlAttribute(name = "idOrder")
     public int getIdOrder() {
         return idOrder;
     }
 
+    @XmlAttribute(name = "idOrder")
     public void setIdOrder(int idOrder) {
         this.idOrder = idOrder;
     }
@@ -50,7 +55,7 @@ public class Order {
     public int getDistance() {
         return distance;
     }
-
+    @XmlElement(name = "distance")
     public void setDistance(int distance) {
         this.distance = distance;
     }
@@ -58,25 +63,25 @@ public class Order {
     public String getDestination() {
         return destination;
     }
-
+    @XmlElement(name = "destination")
     public void setDestination(String destination) {
         this.destination = destination;
     }
 
-    @XmlElement(name = "mailing")
     public boolean isMailing() {
         return isMailing;
     }
 
+    @XmlElement(name = "mailing")
     public void setMailing(boolean mailing) {
         isMailing = mailing;
     }
 
-    @XmlElement(name = "driver")
     public boolean isDriver() {
         return isDriver;
     }
 
+    @XmlElement(name = "driver")
     public void setDriver(boolean driver) {
         isDriver = driver;
     }

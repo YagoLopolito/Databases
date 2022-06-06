@@ -8,9 +8,23 @@ import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 
 public class JaxBImpl {
+    public OrderList jaxbMarshall(OrderList order) throws JAXBException, FileNotFoundException {
+        try {
+            JAXBContext c = JAXBContext.newInstance(OrderList.class);
+            Marshaller m = c.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(order, new FileOutputStream("src/main/resources/jaxb/Orders.xml"));
+        } catch (JAXBException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return order;
+    }
+
     public List<OrderList> unmarshallOrderList() {
 
         {

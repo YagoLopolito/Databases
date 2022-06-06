@@ -4,12 +4,14 @@ package com.solvd.Uver;
 import com.solvd.Uver.entities.*;
 import com.solvd.Uver.exception.DAOException;
 import com.solvd.Uver.service.jacksonImpl.JacksonImpl;
+import com.solvd.Uver.service.jaxbImpl.JaxBImpl;
 import com.solvd.Uver.service.jdbcImpl.*;
 import com.solvd.Uver.service.mybatis.CarServiceMyBatisImpl;
 import jakarta.xml.bind.JAXBException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +37,44 @@ public class Runner {
 //                               JaxB
         switch (scannerOption.nextInt()) {
             case 1:
-                log.info("Work in progress.");
+                log.info("\nDo you want to:"
+                                + "\n1- Write the Orders.xml File."
+                                + "\n2- Read the Orders.xml File."
+                        + "\n3- Write the Prime Clients List."
+                        +"\n4- Read the Prime Clients List."
+                        );
+                Scanner scannerObject0 = new Scanner(System.in);
+
+                switch (scannerObject0.nextInt()) {
+                    case 1:
+                        Scanner scannerCant = new Scanner(System.in);
+                        log.info("\nHow many orders do you want to add?");
+                        int cant = scannerCant.nextInt() - 1;
+                OrderList orderList = new OrderList();
+                ArrayList<Order> array = new ArrayList<>();
+                Order order = new Order();
+
+                orderList.setName("Orders");
+                orderList.setOrders(array);
+                ArrayList<Order> orders = orderList.getOrders();
+                        for (int i = 0; i <= cant; i = i + 1) {
+                            order.setIdOrder(i);
+                            array.add(order);
+                        }
+                JaxBImpl jax = new JaxBImpl();
+                jax.jaxbMarshall(orderList);
                 break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+                }
+
 //            Mybatis
 //                    Mybatis
 //                          Mybatis

@@ -12,7 +12,8 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.util.ArrayList;
 
-public class JAXBRunner {
+public class
+JAXBRunner {
     private static final Logger log = LogManager.getLogger(Runner.class);
     public static void main(String[] args) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(OrderList.class);
