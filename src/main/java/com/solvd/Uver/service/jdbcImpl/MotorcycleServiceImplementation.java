@@ -4,7 +4,7 @@ import com.solvd.Uver.daos.MotorcycleDAO;
 import com.solvd.Uver.daos.DAOimpl.MotorcycleDAOImpl;
 import com.solvd.Uver.entities.Moto;
 import com.solvd.Uver.exception.DAOException;
-import com.solvd.Uver.service.daoServices.MotorcycleService;
+import com.solvd.Uver.service.MotorcycleService;
 
 import java.net.ConnectException;
 import java.util.List;

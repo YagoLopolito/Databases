@@ -8,20 +8,24 @@
     </resultMap>
 
     <select id="getById" parameterType="Integer" resultMap="MotorcycleResultMap">
-        Select * from motorcycle where idCar =#{id}
+        Select * from motorcycle where idCar =#{idCar}
     </select>
 
     <select id="getAll" resultMap="MotorcycleResultMap">
-
+        Select * from motorcycle;
     </select>
 
     <delete id="delete">
-
+        Delete from motorcycle where idCar = ${idCar};
     </delete>
-    <insert id="save">
 
+    <insert id="save">
+        Insert into motorcycle (idCar,make,model,maxSpeed)
+        Values (${idCar},"${make}","${model}",${maxSpeed});
     </insert>
+
     <update id="update">
-        UPDATE moto SET model = #{model}, make = #{make} WHERE idCar = #{id};
+        UPDATE motorcycle SET model = #{model}, make = #{make} WHERE idCar = #{idCar};
     </update>
 </mapper>
+

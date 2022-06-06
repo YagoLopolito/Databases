@@ -1,4 +1,4 @@
-package com.solvd.Uver.service;
+package com.solvd.Uver.service.jacksonImpl;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;

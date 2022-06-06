@@ -1,4 +1,4 @@
-package com.solvd.Uver.service.daoServices;
+package com.solvd.Uver.service;
 
 import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;

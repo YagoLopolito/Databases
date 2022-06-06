@@ -8,21 +8,24 @@
         <result column="model" property="model"/>
     </resultMap>
 
-    <select id="getById" parameterType="Integer" resultMap="CarResultMap">
-        Select * from car where idCar =#{id};
+    <select id="getById" parameterType="int" resultMap="CarResultMap">
+        Select * from car where idCar = ${idCar};
     </select>
 
     <select id="getAll" resultMap="CarResultMap">
-
+        Select * from car;
     </select>
 
     <delete id="delete">
-
+        Delete from car where idCar = ${idCar};
     </delete>
-    <insert id="save">
 
+    <insert id="save">
+        Insert into car (idCar,make,model,maxSpeed)
+        Values (${idCar},"${make}","${model}",${maxSpeed});
     </insert>
+
     <update id="update">
-        UPDATE car SET model = #{model}, make = #{make} WHERE idCar = #{id};
+        UPDATE car SET model = "${model}", make = "${make}" WHERE idCar = #{idCar};
     </update>
 </mapper>

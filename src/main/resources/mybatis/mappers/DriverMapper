@@ -11,20 +11,23 @@
     </resultMap>
 
     <select id="getById" parameterType="Integer" resultMap="DriverResultMap">
-        Select * from driver where idDriver =#{id}
+        Select * from driver where idDriver =#{idDriver}
     </select>
 
     <select id="getAll" resultMap="DriverResultMap">
-
+        Select * from driver;
     </select>
 
     <delete id="delete">
-        DELETE from driver WHERE idDriver = #{id};
+        DELETE from driver WHERE idDriver = #{idDriver};
     </delete>
-    <insert id="save">
 
+    <insert id="save">
+        Insert into driver (idDriver,firstName,lastName,wage)
+        Values (${idDriver},"${firstName}","${lastName}",${wage});
     </insert>
+
     <update id="update">
-        UPDATE driver SET firstName = #{firstName}, lastName = #{lastName}, wage = #{wage} WHERE idDriver = #{id};
+        UPDATE driver SET firstName = #{firstName}, lastName = #{lastName}, wage = #{wage} WHERE idDriver = #{idDriver};
     </update>
 </mapper>

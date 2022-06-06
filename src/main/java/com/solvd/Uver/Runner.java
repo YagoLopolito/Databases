@@ -1,22 +1,16 @@
 package com.solvd.Uver;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.solvd.Uver.entities.*;
 import com.solvd.Uver.exception.DAOException;
-import com.solvd.Uver.service.JacksonImpl;
-import com.solvd.Uver.service.JaxBImpl;
+import com.solvd.Uver.service.jacksonImpl.JacksonImpl;
 import com.solvd.Uver.service.jdbcImpl.*;
+import com.solvd.Uver.service.mybatis.CarServiceMyBatisImpl;
 import jakarta.xml.bind.JAXBException;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -47,28 +41,24 @@ public class Runner {
 //                    Mybatis
 //                          Mybatis
             case 2:
-                Reader reader = Resources.getResourceAsReader("mybatis/mybatis-config.xml");
-                SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-                SqlSession session = sqlSessionFactory.openSession();
-                car = session.selectOne("getById", 3);
-                log.info("\n-------------CARS---------------\nCar Id: "
-                        + car.getIdCar() + "\nMake: "
-                        + car.getMake() + "\nModel: " + car.getModel()
-                        + "\nMax Speed: " + car.getMaxSpeed());
-                Car car2 = session.selectOne("getById", 1);
-                log.info("\n---------------------------------\nCar Id: "
-                        + car2.getIdCar() + "\nMake: "
-                        + car2.getMake() + "\nModel: " + car2.getModel()
-                        + "\nMax Speed: " + car2.getMaxSpeed());
-                Car car3 = session.selectOne("getById", 5);
-                log.info("\n--------------------------------\nCar Id: "
-                        + car3.getIdCar() + "\nMake: "
-                        + car3.getMake() + "\nModel: " + car3.getModel()
-                        + "\nMax Speed: " + car3.getMaxSpeed()
-                        + "\n--------------------------------\n");
+                CarServiceMyBatisImpl carSon = new CarServiceMyBatisImpl();
+                Scanner scannerIdCar = new Scanner(System.in);
+                Scanner scannerMake = new Scanner(System.in);
+                Scanner scannerModel = new Scanner(System.in);
 
-                session.commit();
-                session.close();
+                log.info("Introduce an id to the car.");
+                car.setIdCar(scannerIdCar.nextInt());
+
+                log.info("Introduce a make for the car.");
+                car.setMake(scannerMake.nextLine());
+
+                log.info("Introduce an model for the car.");
+                car.setModel(scannerModel.nextLine());
+
+                log.info("The car is going in, please wait...");
+                carSon.insert(car);
+
+                log.info("The car was inserted in the database.");
 
                 break;
 
@@ -78,17 +68,17 @@ public class Runner {
 
             case 3:
                 log.info("\nDo you want to:"
-                        + "\n1- Insert an objet in the database."
-                        + "\n2- Delete an objet by id."
-                        + "\n3- Update an objet."
-                        + "\n4- Get all the objets of the table."
-                        + "\n5- Get an objet by id.");
+                        + "\n1- Insert an object in the database."
+                        + "\n2- Delete an object by id."
+                        + "\n3- Update an object."
+                        + "\n4- Get all the objects of the table."
+                        + "\n5- Get an object by id.");
                 Scanner scannerObject2 = new Scanner(System.in);
 
                 switch (scannerObject2.nextInt()) {
                     case 1:
 
-                        log.info("\nWhat objet do you want to insert:"
+                        log.info("\nWhat object do you want to insert:"
                                 + "\n1-Car.\n2-Moto.\n3-Super Car.\n4-Super Moto.\n5-Driver.");
                         Scanner scannerInsert = new Scanner(System.in);
 
@@ -96,18 +86,18 @@ public class Runner {
                             case 1:
 
                                 CarServiceImplementation carS = new CarServiceImplementation();
-                                Scanner scannerIdCar = new Scanner(System.in);
-                                Scanner scannerMake = new Scanner(System.in);
-                                Scanner scannerModel = new Scanner(System.in);
+                                Scanner scannerIdCara = new Scanner(System.in);
+                                Scanner scannerMakea = new Scanner(System.in);
+                                Scanner scannerModela = new Scanner(System.in);
 
                                 log.info("Introduce an id to the car.");
-                                car.setIdCar(scannerIdCar.nextInt());
+                                car.setIdCar(scannerIdCara.nextInt());
 
                                 log.info("Introduce a make for the car.");
-                                car.setMake(scannerMake.nextLine());
+                                car.setMake(scannerMakea.nextLine());
 
                                 log.info("Introduce an model for the car.");
-                                car.setModel(scannerModel.nextLine());
+                                car.setModel(scannerModela.nextLine());
 
                                 log.info("The car is going in, please wait...");
                                 carS.insert(car);
@@ -205,7 +195,7 @@ public class Runner {
 
                     case 2:
 
-                        log.info("\nWhat objet do you want to delete from the database:"
+                        log.info("\nWhat object do you want to delete from the database:"
                                 + "\n1-Car.\n2-Moto.\n3-Super Car.\n4-Super Moto.\n5-Driver.");
                         Scanner scannerDelete = new Scanner(System.in);
 
@@ -288,7 +278,7 @@ public class Runner {
                         break;
 
                     case 3:
-                        log.info("\nWhat objet do you want to update from the database:"
+                        log.info("\nWhat object do you want to update from the database:"
                                 + "\n1-Car.\n2-Moto.\n3-Super Car.\n4-Super Moto.\n5-Driver.");
                         Scanner scannerUpdate = new Scanner(System.in);
 
@@ -296,24 +286,24 @@ public class Runner {
 
                             case 1:
                                 CarServiceImplementation carS = new CarServiceImplementation();
-                                Scanner scannerIdCar = new Scanner(System.in);
-                                Scanner scannerMake = new Scanner(System.in);
-                                Scanner scannerModel = new Scanner(System.in);
+                                Scanner scannerIdCars = new Scanner(System.in);
+                                Scanner scannerMakes = new Scanner(System.in);
+                                Scanner scannerModels = new Scanner(System.in);
 
                                 log.info("Introduce an id of the car you want update.");
-                                car.setIdCar(scannerIdCar.nextInt());
-                                int id = 0;
+                                car.setIdCar(scannerIdCars.nextInt());
+                                int id;
                                 id = car.getIdCar();
 
                                 log.info("You are updating the car: " + carS.getById(id));
 
                                 log.info("Introduce a make to update for the car N°: "
                                         + car.getIdCar());
-                                car.setMake(scannerMake.nextLine());
+                                car.setMake(scannerMakes.nextLine());
 
                                 log.info("Introduce an model to update for the car N°: "
                                         + car.getIdCar());
-                                car.setModel(scannerModel.nextLine());
+                                car.setModel(scannerModels.nextLine());
 
                                 log.info("The car is being updated, please wait...");
                                 carS.update(car);
@@ -481,7 +471,7 @@ public class Runner {
 
                     case 5:
 
-                        log.info("\nWhat objet do you want to see from the database:"
+                        log.info("\nWhat object do you want to see from the database:"
                                 + "\n1-Car.\n2-Moto.\n3-Super Car.\n4-Super Moto.\n5-Driver.");
                         Scanner scannerGetById = new Scanner(System.in);
 

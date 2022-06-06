@@ -1,4 +1,4 @@
-package com.solvd.Uver.service;
+package com.solvd.Uver.service.jaxbImpl;
 
 import com.solvd.Uver.Runner;
 import com.solvd.Uver.entities.Order;
