@@ -11,7 +11,6 @@ import jakarta.xml.bind.JAXBException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ public class Runner {
         //       Menu
         //               Menu
         //                      Menu
-        log.info("Do you want to use: \n1-JAXB\n2-MyBatis\n3-JDBC\n4-JSON");
+        log.info("Do you want to use: \n1-JAXB\n2-JDBC\n3-JSON");
         Scanner scannerOption = new Scanner(System.in);
 //               JaxB
 //                       JaxB
@@ -58,6 +57,8 @@ public class Runner {
                 orderList.setOrders(array);
                 ArrayList<Order> orders = orderList.getOrders();
                         for (int i = 0; i <= cant; i = i + 1) {
+                            
+
                             order.setIdOrder(i);
                             array.add(order);
                         }
@@ -75,36 +76,12 @@ public class Runner {
                 break;
                 }
 
-//            Mybatis
-//                    Mybatis
-//                          Mybatis
-            case 2:
-                CarServiceMyBatisImpl carSon = new CarServiceMyBatisImpl();
-                Scanner scannerIdCar = new Scanner(System.in);
-                Scanner scannerMake = new Scanner(System.in);
-                Scanner scannerModel = new Scanner(System.in);
-
-                log.info("Introduce an id to the car.");
-                car.setIdCar(scannerIdCar.nextInt());
-
-                log.info("Introduce a make for the car.");
-                car.setMake(scannerMake.nextLine());
-
-                log.info("Introduce an model for the car.");
-                car.setModel(scannerModel.nextLine());
-
-                log.info("The car is going in, please wait...");
-                carSon.insert(car);
-
-                log.info("The car was inserted in the database.");
-
-                break;
 
 //                DAO IMPLEMENTATION
 //                          DAO IMPLEMENTATION
 //                                      DAO IMPLEMENTATION
 
-            case 3:
+            case 2:
                 log.info("\nDo you want to:"
                         + "\n1- Insert an object in the database."
                         + "\n2- Delete an object by id."
