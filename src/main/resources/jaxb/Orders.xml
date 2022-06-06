@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <orderList>
-    <name>Marinero1</name>
+    <name>Orders</name>
     <orders>
         <order idOrder="0">
-            <distance>132</distance>
-            <mailing>false</mailing>
+            <distance>123</distance>
+            <mailing>true</mailing>
             <driver>false</driver>
-            <destination>Pensington</destination>
-            <estimatedTimeOfArrival>111</estimatedTimeOfArrival>
+            <destination>Marruecos</destination>
+            <estimatedTimeOfArrival>233</estimatedTimeOfArrival>
         </order>
         <order idOrder="0">
-            <distance>132</distance>
-            <mailing>false</mailing>
+            <distance>623</distance>
+            <mailing>true</mailing>
             <driver>false</driver>
-            <destination>Pensington</destination>
-            <estimatedTimeOfArrival>111</estimatedTimeOfArrival>
+            <destination>Marros</destination>
+            <estimatedTimeOfArrival>1</estimatedTimeOfArrival>
+        </order>
+        <order idOrder="0">
+            <distance>1244</distance>
+            <mailing>false</mailing>
+            <driver>true</driver>
+            <destination>Mascos</destination>
+            <estimatedTimeOfArrival>32</estimatedTimeOfArrival>
+        </order>
+        <order idOrder="0">
+            <distance>33</distance>
+            <mailing>false</mailing>
+            <driver>true</driver>
+            <destination>Mas</destination>
+            <estimatedTimeOfArrival>216</estimatedTimeOfArrival>
         </order>
     </orders>
 </orderList>

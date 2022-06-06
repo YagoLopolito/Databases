@@ -16,9 +16,6 @@
     <mappers>
         <mapper resource="mybatis/mappers/CarMapper"/>
         <!--        <mapper resource="mybatis/mappers/MotorcycleMapper.xml"/>-->
-        <!--        <mapper resource="mybatis/mappers/SuperCarMapper.xml"/>-->
-        <!--        <mapper resource="mybatis/mappers/SuperMotoMapper.xml"/>-->
-        <!--        <mapper resource="mybatis/mappers/EmployeeMapper.xml"/>-->
         <!--        <mapper resource="mybatis/mappers/DriverMapper.xml"/>-->
     </mappers>
 </configuration>
