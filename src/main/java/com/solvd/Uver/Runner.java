@@ -561,7 +561,7 @@ public class Runner {
 
                 break;
 
-            case 4:
+            case 3:
 
                 JacksonImpl jackson = new JacksonImpl();
                 log.info("\nDo you want to:"

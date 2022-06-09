@@ -7,7 +7,7 @@ import java.net.ConnectException;
 import java.util.List;
 
 public interface CarService {
-    void insert(Car a);
+    void insert(Car a) throws ConnectException;
 
     void update(Car a) throws ConnectException;
 

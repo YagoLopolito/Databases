@@ -5,6 +5,7 @@ import com.solvd.Uver.daos.DriverDAO;
 import com.solvd.Uver.entities.Car;
 import com.solvd.Uver.entities.Driver;
 import com.solvd.Uver.exception.DAOException;
+import com.solvd.Uver.exception.MyBatisException;
 import com.solvd.Uver.service.DriverService;
 import com.solvd.Uver.util.Constants;
 import com.solvd.Uver.util.DBPropertiesUtil;
@@ -21,21 +22,18 @@ import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DriverServiceMyBatisImpl implements DriverService {
+public class DriverServiceMyBatisImpl extends AbstractService implements DriverService {
     private final static Logger log = LogManager.getLogger(DriverServiceMyBatisImpl.class);
-    private final static String MYBATIS = DBPropertiesUtil.getString(Constants.MYBATIS);
 
     @Override
     public void insert(Driver a) {
         DriverDAO driverDAO;
-        try{
-            Reader reader = Resources.getResourceAsReader(MYBATIS);
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            SqlSession session = sqlSessionFactory.openSession();
+        try(SqlSession session = sqlSession()){
             driverDAO = session.getMapper(DriverDAO.class);
             driverDAO.insert(a);
             session.commit();
-        } catch (IOException | DAOException e ) {
+            sqlSession().close();
+        } catch (IOException | MyBatisException e ) {
             log.info("MyBatis Error." + e);
             throw new RuntimeException(e);
         }
@@ -44,14 +42,12 @@ public class DriverServiceMyBatisImpl implements DriverService {
     @Override
     public void update(Driver a) throws ConnectException {
         DriverDAO driverDAO;
-        try{
-            Reader reader = Resources.getResourceAsReader(MYBATIS);
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            SqlSession session = sqlSessionFactory.openSession();
+        try(SqlSession session = sqlSession()){
             driverDAO = session.getMapper(DriverDAO.class);
             driverDAO.update(a);
             session.commit();
-        } catch (IOException  | DAOException e) {
+            sqlSession().close();
+        } catch (IOException  | MyBatisException e) {
             log.info("MyBatis error." + e);
             throw new RuntimeException();
         }
@@ -60,14 +56,12 @@ public class DriverServiceMyBatisImpl implements DriverService {
     @Override
     public void deleteById(int id) throws ConnectException {
         DriverDAO driverDAO;
-        try{
-            Reader reader = Resources.getResourceAsReader(MYBATIS);
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            SqlSession session = sqlSessionFactory.openSession();
+        try(SqlSession session = sqlSession()){
             driverDAO = session.getMapper(DriverDAO.class);
             driverDAO.deleteById(id);
             session.commit();
-        } catch (IOException  | DAOException e) {
+            sqlSession().close();
+        } catch (IOException  | MyBatisException e) {
             log.info("Error in MyBatis." + e);
             throw new RuntimeException();
         }
@@ -77,13 +71,13 @@ public class DriverServiceMyBatisImpl implements DriverService {
     public Driver getById(int id) throws ConnectException {
         DriverDAO driverDAO;
         Driver a;
-        try {
-            Reader reader = Resources.getResourceAsReader(MYBATIS);
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            driverDAO = sqlSessionFactory.openSession().getMapper(DriverDAO.class);
+        try(SqlSession session = sqlSession()){
+            driverDAO = sqlSession().getMapper(DriverDAO.class);
             a = driverDAO.getById(id);
-        } catch (IOException | DAOException e) {
-            log.info("Can´t solve 'select' statement with myBatis" + e);
+            session.commit();
+            sqlSession().close();
+        } catch (IOException | MyBatisException e) {
+            log.error("Can´t solve 'select' statement with myBatis" + e);
             throw new RuntimeException(e);
         }
         return a;
@@ -92,15 +86,14 @@ public class DriverServiceMyBatisImpl implements DriverService {
     public List<Driver> getAll() {
         DriverDAO driverDAO;
         List<Driver> drivers;
-        try{
-            Reader reader = Resources.getResourceAsReader(MYBATIS);
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            drivers = new ArrayList<>();
-            driverDAO = sqlSessionFactory.openSession().getMapper(DriverDAO.class);
+        try(SqlSession session = sqlSession()){
+            driverDAO = sqlSession().getMapper(DriverDAO.class);
             drivers = driverDAO.getAll();
+            session.commit();
+            sqlSession().close();
 
-        } catch (IOException | DAOException e ) {
-            log.info("MyBatis error." + e);
+        } catch (IOException | MyBatisException e ) {
+            log.error("MyBatis error." + e);
             throw new RuntimeException(e);
         };
         return drivers;

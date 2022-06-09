@@ -16,6 +16,6 @@ public interface DriverService {
 
     Driver getById(int id) throws DAOException, ConnectException;
 
-    List<Driver> getAll();
+    List<Driver> getAll() throws ConnectException;
 }
 

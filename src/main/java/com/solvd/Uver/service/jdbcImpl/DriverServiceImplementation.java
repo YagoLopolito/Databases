@@ -27,14 +27,11 @@ public class DriverServiceImplementation implements DriverService {
     }
 
     @Override
-    public List<Driver> getAll() {
+    public List<Driver> getAll() throws ConnectException {
         DriverDAO driver = new DriverDAOImpl();
         List<Driver> driverList = null;
-        try {
-            driverList = driver.getAll();
-        } catch (DAOException | ConnectException e) {
-            e.printStackTrace();
-        }
+        driverList = driver.getAll();
+
         return driverList;
     }
 

@@ -1,36 +1,30 @@
 package com.solvd.Uver.service.mybatis;
 
-import com.solvd.Uver.daos.CarDAO;
-import com.solvd.Uver.entities.Car;
-import com.solvd.Uver.exception.DAOException;
+import com.solvd.Uver.daos.SuperCarDAO;
+import com.solvd.Uver.daos.SuperMotoDAO;
+import com.solvd.Uver.entities.SuperCar;
+import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.MyBatisException;
-import com.solvd.Uver.service.CarService;
-import com.solvd.Uver.util.Constants;
-import com.solvd.Uver.util.DBPropertiesUtil;
-import org.apache.ibatis.io.Resources;
+import com.solvd.Uver.service.SuperCarService;
+import com.solvd.Uver.service.SuperMotoService;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.net.ConnectException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CarServiceMyBatisImpl extends AbstractService implements CarService {
-    private final static Logger log = LogManager.getLogger(CarServiceMyBatisImpl.class);
+public class SuperMotoMyBatysImpl extends AbstractService implements SuperMotoService {
+    private final static Logger log = LogManager.getLogger(SuperMotoMyBatysImpl.class);
 
 
     @Override
-    public void insert(Car a) {
-        CarDAO carDAO;
+    public void insert(SuperMotorcycle a) {
+        SuperMotoDAO superMotoDAO;
         try(SqlSession session = sqlSession()){
-            carDAO = session.getMapper(CarDAO.class);
-            carDAO.insert(a);
+            superMotoDAO = session.getMapper(SuperMotoDAO.class);
+            superMotoDAO.insert(a);
             session.commit();
             sqlSession().close();
         } catch (IOException | MyBatisException e ) {
@@ -40,11 +34,11 @@ public class CarServiceMyBatisImpl extends AbstractService implements CarService
     }
 
     @Override
-    public void update(Car a) throws ConnectException {
-        CarDAO carDAO;
+    public void update(SuperMotorcycle a) throws ConnectException {
+        SuperMotoDAO superMotoDAO;
         try(SqlSession session = sqlSession()){
-            carDAO = session.getMapper(CarDAO.class);
-            carDAO.update(a);
+            superMotoDAO = session.getMapper(SuperMotoDAO.class);
+            superMotoDAO.update(a);
             session.commit();
             sqlSession().close();
         } catch (IOException | MyBatisException e) {
@@ -55,10 +49,10 @@ public class CarServiceMyBatisImpl extends AbstractService implements CarService
 
     @Override
     public void deleteById(int id) throws ConnectException {
-        CarDAO carDAO;
+        SuperMotoDAO superMotoDAO;
         try(SqlSession session = sqlSession()){
-            carDAO = session.getMapper(CarDAO.class);
-            carDAO.deleteById(id);
+            superMotoDAO = session.getMapper(SuperMotoDAO.class);
+            superMotoDAO.deleteById(id);
             session.commit();
             sqlSession().close();
         } catch (IOException | MyBatisException e) {
@@ -68,12 +62,12 @@ public class CarServiceMyBatisImpl extends AbstractService implements CarService
     }
 
     @Override
-    public Car getById(int id) throws ConnectException {
-        CarDAO carDAO;
-        Car a;
+    public SuperMotorcycle getById(int id) throws ConnectException {
+        SuperMotoDAO superMotoDAO;
+        SuperMotorcycle a;
         try (SqlSession session = sqlSession()){
-            carDAO = sqlSession().getMapper(CarDAO.class);
-            a = carDAO.getById(id);
+            superMotoDAO = sqlSession().getMapper(SuperMotoDAO.class);
+            a = superMotoDAO.getById(id);
             session.commit();
             sqlSession().close();
         } catch (IOException | MyBatisException e) {
@@ -83,20 +77,22 @@ public class CarServiceMyBatisImpl extends AbstractService implements CarService
         return a;
     }
     @Override
-    public List<Car> getAll() throws ConnectException {
-        CarDAO carDAO;
-        List<Car> carList;
+    public List<SuperMotorcycle> getAll() throws ConnectException {
+        SuperMotoDAO superMotoDAO;
+        List<SuperMotorcycle> superCarList;
         try(SqlSession session = sqlSession()){
-            carList = new ArrayList<>();
-            carDAO = sqlSession().getMapper(CarDAO.class);
-            carList = carDAO.getAll();
+
+            superMotoDAO = sqlSession().getMapper(SuperMotoDAO.class);
+            superCarList = superMotoDAO.getAll();
+
             session.commit();
             sqlSession().close();
+
         } catch (IOException | MyBatisException e ) {
             log.error("MyBatis error." + e);
             throw new RuntimeException(e);
 
         };
-        return carList;
+        return superCarList;
     }
 }
