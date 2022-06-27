@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.util.List;
 
-public class SuperMotoImplementation extends AbstractService implements SuperMotoService {
-    private final static Logger log = LogManager.getLogger(SuperMotoImplementation.class);
+public class SuperMotoServiceImplementation extends AbstractService implements SuperMotoService {
+    private final static Logger log = LogManager.getLogger(SuperMotoServiceImplementation.class);
 
 
     @Override
