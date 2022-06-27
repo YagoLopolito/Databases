@@ -2,7 +2,6 @@ package com.solvd.Uver.daos.DAOimpl;
 
 import com.solvd.Uver.daos.CarDAO;
 import com.solvd.Uver.entities.Car;
-import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 
 import java.net.ConnectException;

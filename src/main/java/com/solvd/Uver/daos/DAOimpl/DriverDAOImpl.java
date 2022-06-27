@@ -2,7 +2,6 @@ package com.solvd.Uver.daos.DAOimpl;
 
 import com.solvd.Uver.daos.DriverDAO;
 import com.solvd.Uver.entities.Driver;
-import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 
 import java.net.ConnectException;
@@ -19,8 +18,6 @@ public class DriverDAOImpl extends AbstractJDBCDao implements DriverDAO {
     private final static String DELETE = "DELETE FROM driver WHERE idDriver = ?";
     private final static String GET_ALL = "SELECT idDriver, firstName, lastName, wage FROM driver";
     private final static String GET_ONE = "SELECT idDriver, firstName, lastName, wage FROM driver WHERE idDriver = ?";
-
-
 
 
     @Override

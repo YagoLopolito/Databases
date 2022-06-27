@@ -1,6 +1,6 @@
 package com.solvd.Uver.exception;
 
-public class MyBatisException extends RuntimeException{
+public class MyBatisException extends RuntimeException {
     public MyBatisException(String message) {
         super(message);
     }

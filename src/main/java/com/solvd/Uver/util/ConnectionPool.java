@@ -10,17 +10,14 @@ import java.util.List;
 
 public class ConnectionPool {
 
+    private final static int MAX_CONNECTIONS = com.solvd.Uver.util.DBPropertiesUtil.getInt(Constants.MAX_CONNECTIONS);
+    private static ConnectionPool datasource;
     private final String URL = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.URL);
     private final String USER = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.USERNAME);
     private final String PASS = com.solvd.Uver.util.DBPropertiesUtil.getString(Constants.PASSWORD);
-    private static ConnectionPool datasource;
-    private BasicDataSource basicDataSource;
-
-
-    private final static int MAX_CONNECTIONS = com.solvd.Uver.util.DBPropertiesUtil.getInt(Constants.MAX_CONNECTIONS);
-    private int createdConnectionsAmount = 0;
-
     private final List<Connection> connectionList = new ArrayList<>(MAX_CONNECTIONS);
+    private final BasicDataSource basicDataSource;
+    private int createdConnectionsAmount = 0;
 
 
     private ConnectionPool() {

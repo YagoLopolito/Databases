@@ -1,6 +1,5 @@
 package com.solvd.Uver.util;
 
-import com.solvd.Uver.Runner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

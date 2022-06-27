@@ -1,12 +1,8 @@
 package com.solvd.Uver.entities;
 
-import com.solvd.Uver.daos.DAOimpl.DriverDAOImpl;
-import com.solvd.Uver.exception.DAOException;
-
-import java.net.ConnectException;
 import java.util.Objects;
 
-public class Driver{
+public class Driver {
     int idDriver, wage;
     String firstName, lastName, sex;
 
@@ -84,8 +80,8 @@ public class Driver{
 
     @Override
     public String toString() {
-        return  "\n----------------------------------------------------------------\n"
-                +"Driver"
+        return "\n----------------------------------------------------------------\n"
+                + "Driver"
                 + "\nId Driver: " + idDriver
                 + "\nWage: " + wage
                 + "\nFirst name: " + firstName

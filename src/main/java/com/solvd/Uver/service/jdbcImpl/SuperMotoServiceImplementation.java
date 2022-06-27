@@ -1,7 +1,7 @@
 package com.solvd.Uver.service.jdbcImpl;
 
-import com.solvd.Uver.daos.SuperMotoDAO;
 import com.solvd.Uver.daos.DAOimpl.SuperMotoDAOImpl;
+import com.solvd.Uver.daos.SuperMotoDAO;
 import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 import com.solvd.Uver.service.SuperMotoService;

@@ -1,7 +1,7 @@
 package com.solvd.Uver.service.jdbcImpl;
 
-import com.solvd.Uver.daos.DriverDAO;
 import com.solvd.Uver.daos.DAOimpl.DriverDAOImpl;
+import com.solvd.Uver.daos.DriverDAO;
 import com.solvd.Uver.entities.Driver;
 import com.solvd.Uver.exception.DAOException;
 import com.solvd.Uver.service.DriverService;

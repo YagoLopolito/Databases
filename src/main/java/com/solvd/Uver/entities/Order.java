@@ -15,7 +15,7 @@ public class Order {
     String destination;
     boolean isMailing, isDriver;
 
-    public Order(String destination, Integer distance, Integer estimatedTimeOfArrival, boolean isMailing,boolean isDriver ) {
+    public Order(String destination, Integer distance, Integer estimatedTimeOfArrival, boolean isMailing, boolean isDriver) {
         this.destination = destination;
         this.distance = distance;
         this.estimatedTimeOfArrival = estimatedTimeOfArrival;
@@ -55,6 +55,7 @@ public class Order {
     public int getDistance() {
         return distance;
     }
+
     @XmlElement(name = "distance")
     public void setDistance(int distance) {
         this.distance = distance;
@@ -63,6 +64,7 @@ public class Order {
     public String getDestination() {
         return destination;
     }
+
     @XmlElement(name = "destination")
     public void setDestination(String destination) {
         this.destination = destination;

@@ -1,6 +1,5 @@
 package com.solvd.Uver.daos;
 
-import com.solvd.Uver.entities.SuperMotorcycle;
 import com.solvd.Uver.exception.DAOException;
 
 import java.net.ConnectException;

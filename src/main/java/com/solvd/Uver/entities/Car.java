@@ -72,11 +72,11 @@ public class Car {
     @Override
     public String toString() {
         return "\n----------------------------------------------------------------\n"
-                +"Car" + "\nId car: " + idCar
+                + "Car" + "\nId car: " + idCar
                 + "\nMake: " + make
                 + "\nModel: " + model
                 + "\nMax speed: " + maxSpeed
-                +"\n----------------------------------------------------------------"
+                + "\n----------------------------------------------------------------"
                 ;
     }
 

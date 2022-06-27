@@ -1,6 +1,5 @@
 package com.solvd.Uver.service.mybatis;
 
-import com.solvd.Uver.Runner;
 import com.solvd.Uver.util.Constants;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -14,10 +13,11 @@ import java.io.Reader;
 
 public abstract class AbstractService {
     private static final Logger log = LogManager.getLogger(AbstractService.class);
-    public SqlSession sqlSession(){
+
+    public SqlSession sqlSession() {
         Reader reader = null;
-        try{
-reader = Resources.getResourceAsReader(Constants.MYBATIS);
+        try {
+            reader = Resources.getResourceAsReader(Constants.MYBATIS);
         } catch (IOException e) {
             log.error(e);
         }

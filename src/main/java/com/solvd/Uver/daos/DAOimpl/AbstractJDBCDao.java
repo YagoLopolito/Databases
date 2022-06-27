@@ -11,7 +11,8 @@ public abstract class AbstractJDBCDao {
     public Connection getConnection() throws ConnectException {
         return ConnectionPool.getInstance().getConnection();
     }
-    public void returnConnection(Connection connection){
+
+    public void returnConnection(Connection connection) {
         ConnectionPool.getInstance().returnConnection(connection);
     }
 }

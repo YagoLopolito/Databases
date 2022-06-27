@@ -13,6 +13,7 @@ public class SqlSessionFactoryUtil {
     private static final Logger log = LogManager.getLogger(SqlSessionFactoryUtil.class);
     private static final SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
     private static Reader reader;
+    private static SqlSessionFactory INSTANCE;
 
     static {
         try {
@@ -22,8 +23,6 @@ public class SqlSessionFactoryUtil {
             log.info(e.getMessage());
         }
     }
-
-    private static SqlSessionFactory INSTANCE;
 
     private SqlSessionFactoryUtil() {
     }

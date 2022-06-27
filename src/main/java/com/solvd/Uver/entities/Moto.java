@@ -70,8 +70,8 @@ public class Moto {
 
     @Override
     public String toString() {
-        return  "\n----------------------------------------------------------------\n"
-                +"Moto" + "\nId moto: " + idCar
+        return "\n----------------------------------------------------------------\n"
+                + "Moto" + "\nId moto: " + idCar
                 + "\nMake: " + make
                 + "\nModel: " + model
                 + "\nMax speed: " + maxSpeed

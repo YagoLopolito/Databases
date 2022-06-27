@@ -1,8 +1,6 @@
 package com.solvd.Uver.service.jaxbImpl;
 
 import com.solvd.Uver.entities.OrderList;
-
-import com.solvd.Uver.service.mybatis.AbstractService;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -17,6 +15,19 @@ import java.util.List;
 
 public class JaxBImpl {
     private static final Logger log = LogManager.getLogger(JaxBImpl.class);
+
+    public static void setOrderList(OrderList orderList) {
+
+        try {
+            File file = new File("src/main/resources/jaxb/Orders.xml");
+            JAXBContext jaxbContext = JAXBContext.newInstance(OrderList.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.marshal(orderList, file);
+        } catch (JAXBException e) {
+            log.error(e);
+        }
+    }
+
     public OrderList jaxbMarshall(OrderList order) throws JAXBException, FileNotFoundException {
         try {
             JAXBContext c = JAXBContext.newInstance(OrderList.class);
@@ -43,18 +54,6 @@ public class JaxBImpl {
                 log.error(e);
             }
             return null;
-        }
-    }
-
-    public static void setOrderList(OrderList orderList){
-
-        try {
-            File file = new File("src/main/resources/jaxb/Orders.xml");
-            JAXBContext jaxbContext =JAXBContext.newInstance(OrderList.class);
-            Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.marshal(orderList, file);
-        } catch (JAXBException e) {
-            log.error(e);
         }
     }
 }

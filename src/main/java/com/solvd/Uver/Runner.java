@@ -59,25 +59,17 @@ public class Runner {
                         order4.setIdOrder(4);
                         ArrayList<Order> orders1 = new ArrayList<>();
 
-                            orderList.setOrders(orders1);
-                            ArrayList<Order> orders = orderList.getOrders();
-                            orders.add(order);
-                            orders.add(order2);
-                            orders.add(order3);
-                            orders.add(order4);
+                        orderList.setOrders(orders1);
+                        ArrayList<Order> orders = orderList.getOrders();
+                        orders.add(order);
+                        orders.add(order2);
+                        orders.add(order3);
+                        orders.add(order4);
 
                         JaxBImpl jax = new JaxBImpl();
                         jax.jaxbMarshall(orderList);
                         break;
-                    case 2:
 
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
                 }
                 break;
 
@@ -223,7 +215,7 @@ public class Runner {
 
                                 CarServiceImplementation carS = new CarServiceImplementation();
                                 Scanner scannerDeleteCar = new Scanner(System.in);
-                                int id = 0;
+                                int id;
 
                                 log.info("Select the id number of the car that you want to delete.");
                                 id = scannerDeleteCar.nextInt();
@@ -501,7 +493,7 @@ public class Runner {
                                 CarServiceImplementation carS = new CarServiceImplementation();
                                 Scanner scannerGetByIdCar = new Scanner(System.in);
                                 log.info("Enter the id of the car you want to see from the database: ");
-                                int id = 0;
+                                int id;
                                 id = scannerGetByIdCar.nextInt();
                                 car.setIdCar(id);
                                 log.info("The car is loading, please wait...");

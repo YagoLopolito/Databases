@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.solvd.Uver.entities.Car;
 import com.solvd.Uver.entities.SuperCar;
-import com.solvd.Uver.service.mybatis.AbstractService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

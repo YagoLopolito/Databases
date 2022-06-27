@@ -1,6 +1,5 @@
 package com.solvd.Uver.service;
 
-import com.solvd.Uver.entities.Car;
 import com.solvd.Uver.entities.Driver;
 import com.solvd.Uver.exception.DAOException;
 
